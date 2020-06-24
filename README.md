@@ -24,6 +24,8 @@ zfy611（周芳宇）
 
 2、安徽：https://www.mafengwo.cn/jd/12719/gonglve.html
 
+3、北京：https://www.mafengwo.cn/jd/10065/gonglve.html
+
 抓取内容：
 
 1、XXX：景点图 --> 文件夹
