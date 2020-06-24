@@ -18,29 +18,29 @@ zfy611（周芳宇）
 
 目标网站：马蜂窝（https://www.mafengwo.cn/）
 
-抓取城市TOP5景点（3个）：
+抓取省份TOP5景点（3个）：
 
 1、陕西：https://www.mafengwo.cn/jd/13083/gonglve.html
 
 2、安徽：https://www.mafengwo.cn/jd/12719/gonglve.html
 
+3、北京：https://www.mafengwo.cn/jd/10065/gonglve.html
+
 抓取内容：
 
-1、XXX：景点图 --> 文件夹
+1、林邦皓：景点图 --> 文件夹
 
-2、XXX：景点基本信息（电话、交通、门票等等）--> json
+2、瞿李傲：景点基本信息（电话、交通、门票等等）--> json
 
-3、XXX：相关评论 --> 数据库
+3、李海霞：相关评论 --> 数据库
 
 爬虫语言：Python3
 
 
 
-XXX：网页框架搭建
+4、周芳宇：网页框架搭建
 
-
-
-DDL：2020年
+DDL：2020年6月30日晚8点
 
 
 
