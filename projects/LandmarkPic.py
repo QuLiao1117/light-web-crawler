@@ -10,6 +10,9 @@ import os
 
 # 保存图片函数
 def saveImg(pic_link, path, x):
+#pic_link为图片超链接
+#path为保存相对地址
+#x为图片名称
     if not os.path.exists(path):
         os.makedirs(path)
     pp = requests.get(pic_link)
@@ -22,6 +25,9 @@ def saveImg(pic_link, path, x):
 
 # 下载图片
 def DownLoadPic(driver, num, addr):
+#driver为浏览器
+#num为下载图片数
+#addr保存相对索引
     # 打开大图
     try:
         WebDriverWait(driver, 10).until(lambda x: x.find_element_by_xpath('//*[@id="container"]/li[1]/a[1]'))
@@ -55,6 +61,10 @@ def DownLoadPic(driver, num, addr):
 
 # 打开景点页
 def OpenLandmark(driver, link, name, PicNum):
+#driver为浏览器
+#link为景点网址
+#name为景点所在地名称
+#PicNum为保存图片数
     driver.get(link)
     try:
         WebDriverWait(driver, 10).until(lambda x: x.find_element_by_xpath('/html/body/div[2]/div[2]/div/div[3]'))
@@ -77,6 +87,10 @@ def OpenLandmark(driver, link, name, PicNum):
 
 
 def LoadLocation(driver, location, LandmarkNum, PicNum):
+#driver为浏览器
+#location为景点所在地名称
+#LandmarkNum为保存景点数
+#PicNum为保存图片数
     # 打开马蜂窝，搜索相应地点
     driver.get("https://www.mafengwo.cn/")
     try:
@@ -111,9 +125,10 @@ if __name__ == "__main__":
                 '海南', '四川', '贵州', '云南', '陕西', '甘肃', '青海', '台湾', '西藏', '广西', '内蒙古', '宁夏', '新疆',
                 '北京', '上海', '天津', '重庆', '香港', '澳门']
     LandmarkNum = 5
+    local=['北京',"陕西","安徽"]
 
     # 加载浏览器
     driver = webdriver.Chrome(executable_path="/Library/chromedriver")
-    for i in province:
+    for i in local:
         LoadLocation(driver, i, LandmarkNum, PicNum)
     driver.quit()
