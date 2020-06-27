@@ -35,7 +35,7 @@ def get_place_top5_comments(city_name):#爬取'city_name'城市的top5的景点�
         # print(title)
         #获得景点名称
         place_name=title.text.split('\n')
-        # print(place_name[0])#景点名
+        print(place_name[0])#景点名
         dic[place_name[0]]={}
         # ----------------汇总信息--------------------------------------------------------------------------------------
             #总评论数
@@ -133,11 +133,10 @@ def get_place_top5_comments(city_name):#爬取'city_name'城市的top5的景点�
             print(filepath)
             data.to_csv(filepath, encoding='utf_8_sig')
 
-        json_str = json.dumps(dic, ensure_ascii = False)
-        summaryfilepath = './docs/comments'+'/'+city_name+'/'+place_name[0]+'/'+place_name[0]+'各类评论数统计'+'.json'
-        print(summaryfilepath)
-        with open(summaryfilepath, 'w') as json_file:
-            json_file.write(json_str)
+    json_str = json.dumps(dic, ensure_ascii = False)
+    summaryfilepath = './docs/comments' + '/' + city_name + '/' + city_name + '各类评论数统计' + '.json'
+    with open(summaryfilepath, 'w') as json_file:
+        json_file.write(json_str)
             #------------------保存到文件-------------------------------------------------------------------------------
     driver.close()
 if __name__ == "__main__":
