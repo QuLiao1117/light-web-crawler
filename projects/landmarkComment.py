@@ -49,12 +49,18 @@ def get_place_top5_comments(city_name):#爬取'city_name'城市的top5的景点�
             value = driver.find_element_by_xpath(xcountpath).text
             dic[place_name[0]][key] = value
             # 分别获得其他类型的评论条数信息
-        for i in range(6, 12):
+        for i in range(6, 11):
             xlablepath = '/html/body/div[2]/div[4]/div/div/div[2]/ul/li['+str(i)+']/a'
             xcountpath = xlablepath+'/span'
             key = driver.find_element_by_xpath(xlablepath).text.split('（')
             value = driver.find_element_by_xpath(xcountpath).text
             dic[place_name[0]][key[0]] = value
+        # 获得金牌点评数的信息、
+        xlablepath = '/ html / body / div[2] / div[4] / div / div / div[2] / ul / li[11] / a / span[1]'
+        xcountpath = '/ html / body / div[2] / div[4] / div / div / div[2] / ul / li[11] / a / span[2]'
+        key = driver.find_element_by_xpath(xlablepath).text
+        value = driver.find_element_by_xpath(xcountpath).text
+        dic[place_name[0]][key] = value
         # ----------------汇总信息--------------------------------------------------------------------------------------
 
         fenglei = ['好评', '中评', '差评']
