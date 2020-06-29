@@ -34,46 +34,27 @@ def DownLoadPic(driver, num, addr):
     # driver为浏览器
     # num为下载图片数
     # addr保存相对索引
-    # 打开大图
-
+#获得URL
     try:
-        WebDriverWait(driver, 10).until(
-            lambda x: x.find_element_by_css_selector("#container > li:nth-child(1) > a:nth-child(1) > img"))
+        WebDriverWait(driver, 10).until(lambda x: x.find_elements_by_class_name("a-pic"))
     except Exception as e:
         print("  页面图片加载超时")
         print(e)
-    driver.find_element_by_css_selector("#container > li:nth-child(1) > a:nth-child(1) > img").click()
-    driver.switch_to.window(driver.window_handles[-1])
+    picDiv=driver.find_elements_by_class_name("a-pic")[1:num+1]
 
     # 构造存储相对地址
     root_dir = os.path.dirname(os.path.abspath('.'))
     path = root_dir + "/docs/pic" + addr + '/'
 
     # 下载前num张大图
-    for i in range(1, num + 1):
-        try:
-            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, ('//*[@id="_j_stageimg"]'))))
-        except Exception as e:
-            print("  加载图片超时")
-            print(e)
-        try:
-            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, ("s-next"))))
-            WebDriverWait(driver, 10).until(
-                EC.invisibility_of_element_located((By.CLASS_NAME, "block-loading _j_stageloading")))
-        except Exception as e:
-            print("  寻找下一张图片超时")
-            print(e)
-        element = driver.find_element_by_class_name("s-next")
-        driver.execute_script("arguments[0].click();", element)
-        link = driver.find_element_by_xpath('//*[@id="_j_stageimg"]').get_attribute('src')
+    for i in range(num):
+        link = picDiv[i].get_attribute('src')
         link=link[0:re.search('\?',link).span()[0]]
         try:
-            saveImg(link, path, i)
+            saveImg(link, path, i+1)
         except Exception as e:
             print("  图片保存失败")
             print(e)
-    driver.close()
-    driver.switch_to.window(driver.window_handles[-1])
 
 
 # 打开景点页
@@ -167,9 +148,7 @@ def LoadLocation(driver, location, LandmarkNum, PicNum):
 if __name__ == "__main__":
     # 参数配置
     # 爬取地点
-    Location = ['河北', '山西', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东',
-                '海南', '四川', '贵州', '云南', '陕西', '甘肃', '青海', '台湾', '西藏', '广西', '内蒙古', '宁夏', '新疆',
-                '北京', '上海', '天津', '重庆', '香港', '澳门']
+    Location = ['陕西', '北京', '安徽']
 
     # 爬取景点数
     LandmarkNum = 5
