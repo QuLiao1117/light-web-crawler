@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # encoding=utf-8
-from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
-import requests
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 import os
+import re
+
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 # 保存图片函数
@@ -64,6 +66,7 @@ def DownLoadPic(driver, num, addr):
         element = driver.find_element_by_class_name("s-next")
         driver.execute_script("arguments[0].click();", element)
         link = driver.find_element_by_xpath('//*[@id="_j_stageimg"]').get_attribute('src')
+        link=link[0:re.search('\?',link).span()[0]]
         try:
             saveImg(link, path, i)
         except Exception as e:
@@ -173,9 +176,9 @@ if __name__ == "__main__":
     # 每个景点爬取图片数
     PicNum = 9
     # 加载浏览器，括号为浏览器连接程序位置，需要与本机安装的浏览器版本一致
-    option = webdriver.ChromeOptions()
-    option.add_argument('headless')
-    driver = webdriver.Chrome(executable_path="/Library/chromedriver", options=option)
+    #option = webdriver.ChromeOptions()
+    #option.add_argument('headless')
+    driver = webdriver.Chrome()  #executable_path="/Library/chromedriver", options=option)
 
     failLocation = []
     # 循环下载
