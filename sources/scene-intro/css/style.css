@@ -231,10 +231,13 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
+    background-image: url(../images/八达岭长城/5.png);
+    filter: brightness(1);
+
     height: auto;
     background-size: 100%;
     padding: 0px 0px 20px 0px;
+
 }
 
 .bg-light {
@@ -243,14 +246,15 @@ button {
 
 .logo {
     width: 100%;
-    float: left;
+    float: center;
     text-align: center;
+    filter: brightness(2);
     padding: 20px 0px 50px 0px;
 }
 
 .logo_mobile {
-    width: 100%;
-    float: left;
+    width: 50%;
+    /* float: left; */
     text-align: center;
     padding-bottom: 20px;
 }
