@@ -23,6 +23,8 @@
 
 网页实现：HTML, JavaScript, ECHARTS
 
+数据文件：json(utf-8), CSV
+
 ## 项目进度
 
 ### 第一阶段：抓取数据
@@ -55,9 +57,9 @@
 
 景点详细：基本信息、景点图、评论词云、条形图、情感倾向
 
-数据处理：Python
+数据处理：Python3
 
-相关技术：HTML、Echarts、JavaScript、Python
+相关技术：HTML、Echarts、JavaScript、Python3
 
 ##### 分工：
 
@@ -84,15 +86,17 @@ DDL：2020年7月5日
 ├── Readme.md                   // 项目说明书
 ├── test                        // 项目的测试文件夹
 ├── project                     // 项目主体部分的代码
-│   ├── landmarkInfo.py         // 景点信息爬虫
-│   ├── 爬取城市景点信息.ipynb     // 景点信息爬虫
-│   ├── geoCode.py              // 景点经纬度获取
-│   ├── landmarkComment.py      // 景点评论爬虫
-│   └── landmarkPic.py          // 景点图片爬虫
+│   ├── landmarkInfo.py            // 基本信息爬虫
+│   ├── 爬取城市景点信息.ipynb        // 基本信息爬虫
+│   ├── geoCode.py                 // 经纬度获取
+│   ├── landmarkComment.py         // 评论爬虫
+│   └── landmarkPic.py             // 图片爬虫
 ├── docs                        // 爬取内容
-│   ├── city_landmark_info      // 景点信息
-│   ├── comments                // 景点评论
-│   └── pic                     // 景点图片
+│   ├── city_landmark_info         // 景点基本信息
+│   ├── comments                   // 景点评论相关
+│   │   ├── probs.json                // 景点情感倾向概率
+│   │   └── 地点文件夹                  // 评论数据
+│   └── pic                        // 景点图片
 └── LICENSE
 ```
 
@@ -119,4 +123,3 @@ DDL：2020年7月5日
 ## 使用许可
 
 [MIT](LICENSE) © 2020
-
