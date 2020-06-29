@@ -1,6 +1,6 @@
 # Light Web Crawler for  Tourists Attraction
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square)![HTML-JavaScript](https://img.shields.io/badge/HTML-JavaScript-blue?style=flat-square)[![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/)[![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square)](https://echarts.apache.org/zh/download.html)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme) ![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square) ![HTML-JavaScript](https://img.shields.io/badge/HTML-JavaScript-blue?style=flat-square) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square)](https://echarts.apache.org/zh/download.html)
 
 ## 目录
 
@@ -84,15 +84,15 @@ DDL：2020年7月5日
 ├── Readme.md                   // 项目说明书
 ├── test                        // 项目的测试文件夹
 ├── project                     // 项目主体部分的代码
-│   ├── landmarkInfo.py					// 景点信息爬虫
+│   ├── landmarkInfo.py         // 景点信息爬虫
 │   ├── 爬取城市景点信息.ipynb     // 景点信息爬虫
 │   ├── geoCode.py              // 景点经纬度获取
 │   ├── landmarkComment.py      // 景点评论爬虫
 │   └── landmarkPic.py          // 景点图片爬虫
 ├── docs                        // 爬取内容
-│   ├── city_landmark_info			// 景点信息
-│   ├── comments     						// 景点评论
-│   └── pic          						// 景点图片
+│   ├── city_landmark_info      // 景点信息
+│   ├── comments                // 景点评论
+│   └── pic                     // 景点图片
 └── LICENSE
 ```
 
