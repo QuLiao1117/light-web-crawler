@@ -1,1 +1,6 @@
 //存放依赖的外部Python包列表
+requests>=2.22.0
+selenium>=3.141.0
+pandas>=1.0.1
+numpy>=1.18.1
+snownlp>=0.12.3
