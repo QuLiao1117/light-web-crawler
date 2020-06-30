@@ -4,3 +4,5 @@ selenium>=3.141.0
 pandas>=1.0.1
 numpy>=1.18.1
 snownlp>=0.12.3
+paddlepaddle-tiny==1.6.1
+jieba>=0.42.1
