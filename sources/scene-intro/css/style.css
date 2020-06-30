@@ -160,6 +160,7 @@ a,
 img {
     max-width: 100%;
     height: auto;
+    /* margin-bottom: 5px; */
 }
 
  :focus {
@@ -535,10 +536,17 @@ button {
 }
 
 .about_img {
-    width: 100%;
+    width: 75%;
     float: left;
+    padding-left: 30px;
+    padding-top: 120px;
+    padding-bottom: 10px;
 }
-
+.about_img2 {
+    width: 75%;
+    float: left;
+    padding-left: 30px;
+}
 
 /* contact section end */
 
