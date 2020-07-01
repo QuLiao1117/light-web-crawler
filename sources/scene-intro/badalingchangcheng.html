@@ -231,7 +231,27 @@
                      <div class="carousel-item active">
                         <div class="client_main">
                            <div class="box_left">
-                              <div id="main" style="margin: 0 auto; width:500px; height: 300px; margin-top: 160px;"></div>
+                              
+                                                         
+                           </div>
+                           <div class="box_right">
+                              <div class="client_taital_left">
+                                 <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                              </div>
+                              <div class="client_taital_right">
+                                 <p class="customer_text">
+                                    此次看长城有两收获，一是长城本身，对比汉长城和 嘉峪关 ，为这明清时期的巨石军事建筑点赞，实在是高大结实；二是长城周边，不用到香山就能见到的漫山遍野的红叶黄叶，10月下旬入秋季，正是霜叶遍地红时，艳丽惹人爱。长城的金戈铁马，红叶的温婉美丽，交织成了一片铁骨柔情之美。长城都是有大石块砌成，坚硬厚实，确实是防御的好堡垒。铜墙铁壁配满山红叶，侠骨柔情，突然就想起罗文甄妮那首经典的射雕英雄传主题曲。从北八楼回去走的是长城边上的小路，这倒是让游客有和红叶亲密接触的机会，地上有很多落叶，随便捡起来一看，都是色彩丰富，颜色从深绿，到浅绿，到浅黄，到橙红，到深红。
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="client_main">
+                           <div class="box_left">
+                              
+                              <div id="main" style="margin: 0 auto; width:500px; height: 300px; margin-top: 140px;"></div>
+                                 
                                  <script type="text/javascript">
                                     // 基于准备好的dom，初始化echarts实例
                                     var myChart = echarts.init(document.getElementById('main'));
@@ -241,42 +261,32 @@
                                           title: {
                                              text: '评论数量'
                                           },
-                                          tooltip: {},
-                                          /* legend: {
-                                             data:['数量']
-                                          }, */
                                           xAxis: {
+                                             type: 'category',
                                              data: ["好评","中评","差评","总评","有图"]
                                           },
-                                          yAxis: {},
+                                          yAxis: {
+                                             type:'value'
+                                          },
                                           series: [{
-                                             name: '数量',
+                                             data: [7085, 824, 179, 8088, 1541],
+                                             name:'数量',
                                              type: 'bar',
-                                             data: [7085, 824, 179, 8088, 1541]
+                                             itemStyle: {
+                                                normal: {
+                                                   color: function(params) {
+                                                      var colorList = ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#ca8622'];
+                                                      return colorList[params.dataIndex]
+                                                   }
+                                                }
+                                             }
+                                             
                                           }]
                                     };
 
                                     // 使用刚指定的配置项和数据显示图表。
                                     myChart.setOption(option);
                                  </script>
-                           </div>
-                           <div class="box_right">
-                              <div class="client_taital_left">
-                                 <div class="quick_icon"><img src="images/quick-icon.png"></div>
-                              </div>
-                              <div class="client_taital_right">
-                                 <p class="customer_text">
-                                    不到长城非好汉，老毛一句诗让多少人来了 北京 就跑长城来了，现在长城景区还为这句诗刻了好几个石碑，游客们纷纷排队合影当好汉，看得我尴尬极了。此次看长城有两收获，一是长城本身，对比汉长城和 嘉峪关 ，为这明清时期的巨石军事建筑点赞，实在是高大结实；二是长城周边，不用到香山就能见到的漫山遍野的红叶黄叶，10月下旬入秋季，正是霜叶遍地红时，艳丽惹人爱。长城的金戈铁马，红叶的温婉美丽，交织成了一片铁骨柔情之美。长城都是有大石块砌成，坚硬厚实，确实是防御的好堡垒。铜墙铁壁配满山红叶，侠骨柔情，突然就想起罗文甄妮那首经典的射雕英雄传主题曲。从北八楼回去走的是长城边上的小路，这倒是让游客有和红叶亲密接触的机会，地上有很多落叶，随便捡起来一看，都是色彩丰富，颜色从深绿，到浅绿，到浅黄，到橙红，到深红。
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="carousel-item">
-                        <div class="client_main">
-                           <div class="box_left">
-                              <div id="main_2" style="margin: 0 auto; width:500px; height: 300px;"></div>
-                              
                            </div>
                            <div class="box_right">
                               <div class="client_taital_left">
