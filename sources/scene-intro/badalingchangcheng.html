@@ -231,8 +231,55 @@
                      <div class="carousel-item active">
                         <div class="client_main">
                            <div class="box_left">
-                              
-                                                         
+                              <div id="main1" style="margin: 0 auto; width:500px; height: 300px; margin-top: 100px;"></div>
+                              <script type="text/javascript">
+                                 // 基于准备好的dom，初始化echarts实例
+                                 var myChart = echarts.init(document.getElementById('main1'));
+                                 // 指定图表的配置项和数据
+                                 myChart.setOption({
+                                     title: {
+                                         text: '情感倾向',
+                         
+                                     },
+                                     tooltip: {
+                                         trigger: 'axis',
+                                         axisPointer: {
+                                             type: 'shadow'
+                                         }
+                                     },
+                                     legend: {
+                                     },
+                                     grid: {
+                                         left: '3%',
+                                         right: '4%',
+                                         bottom: '3%',
+                                         containLabel: true
+                                     },
+                                     xAxis: {
+                                         type: 'value',
+                                         boundaryGap: [0, 0.01]
+                                     },
+                                     yAxis: {
+                                         type: 'category',
+                                         data: ['八达岭长城','故宫','天安门广场','天坛公园','颐和园']
+                                     },
+                                     series: [
+                         
+                                         {
+                                             name: '情感倾向',
+                                             type: 'bar',
+                         
+                                             itemStyle: {
+                                                 normal: {
+                                                     color: '#a8bcd4'
+                                                 }
+                                             },
+                                             data: [0.7117, 0.8659, 0.7803, 0.7988, 0.8330]
+                                         }
+                                     ]
+                                 });
+                             </script>
+                         
                            </div>
                            <div class="box_right">
                               <div class="client_taital_left">
