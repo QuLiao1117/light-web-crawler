@@ -326,12 +326,16 @@ button {
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 10px;
+    /* display: block; */
 }
 
 .menu_main li a:hover {
     color: #ffffff;
     background-color: #2b2278;
 }
+
+
+
 
 .mb-lg-0,
 .my-lg-0 {
@@ -539,7 +543,7 @@ button {
     width: 75%;
     float: left;
     padding-left: 30px;
-    padding-top: 120px;
+    padding-top: 150px;
     padding-bottom: 10px;
 }
 .about_img2 {
