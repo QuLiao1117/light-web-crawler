@@ -6,3 +6,4 @@ numpy>=1.18.1
 snownlp>=0.12.3
 paddlepaddle-tiny==1.6.1
 jieba==0.42.1
+wordcloud>=1.7.0
