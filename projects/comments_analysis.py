@@ -5,7 +5,7 @@
 
 使用snowNLP训练好的模型计算评论情感概率。
 使用jieba分词（paddle训练模型）计算词频。
-结果输出在原目录的json中。
+结果输出在原目录的json中，并导出词云。
 
 Args:
     FILE_PATH: 所有评论的文件夹路径
@@ -21,6 +21,7 @@ import jieba
 import jieba.analyse
 import numpy
 import pandas as pd
+import wordcloud
 from snownlp import SnowNLP
 
 
@@ -107,7 +108,7 @@ def _cal_emotion_probs(good_comments, normal_comments, bad_comments, count_summa
     return total_comment_prob
 
 
-# 计算所给文本的情感倾向
+# 计算所给文本的词频
 def _cal_words_freq(texts, stopwords):
     # Args:
     #   texts: 一组评论list
@@ -138,7 +139,7 @@ def comments_analysis(comment_file_path, stopwords_file_path):
 
     使用snowNLP训练好的模型计算评论情感概率。
     使用jieba分词（paddle训练模型）计算词频。
-    结果输出在原目录的json中。
+    结果输出在原目录的json中，并导出词云。
 
     Args:
         comment_file_path: 所有评论的文件夹路径
@@ -183,15 +184,24 @@ def comments_analysis(comment_file_path, stopwords_file_path):
                 bad_comments = []
             landmark_prob = _cal_emotion_probs(
                 good_comments, normal_comments, bad_comments, count_summary)
-
+            # 词频计算
             stopwords = _get_stopwords_list(stopwords_file_path)
             landmark_words_freq = _cal_words_freq(comments, stopwords)
+            # 输出json
             json_data = {"emotional_prob": landmark_prob}
             json_data.update({"words_freq": landmark_words_freq})
             json_out = {"apiVersion": "1.0", "data": json_data}
             with open(landmark_file_path
                       + '/' + "comments analysis.json", "w", encoding='utf-8') as json_file:
                 json_file.write(json.dumps(json_out, indent=4, ensure_ascii=False))
+            # 输出词云
+            landmark_wordcloud = wordcloud.WordCloud(scale=4, font_path="./SimHei.ttf",
+                                                     background_color='white', max_words=50,
+                                                     max_font_size=100, random_state=20,
+                                                     width=300, height=300
+                                                     ).generate_from_frequencies(
+                                                         landmark_words_freq)
+            landmark_wordcloud.to_file(landmark_file_path + '/' + "comments wordcloud.png")
             print(' ' + landmark + " 分析完成")
 
 
