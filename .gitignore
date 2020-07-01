@@ -1,6 +1,10 @@
 /.ipynb_checkpoints/
 /.idea/
+tests/.ipynb_checkpoints
 .DS_Store
 */.DS_Store
 [core] **
 excludesfile = ./.gitignore_global **
+tests/.ipynb_checkpoints/情感分析-checkpoint.ipynb
+test.py
+test.py
