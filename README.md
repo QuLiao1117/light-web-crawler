@@ -1,8 +1,8 @@
 # Light Web Crawler for  Tourists Attraction
 
-![CAU CIEE](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://www.ciee.cau.edu.cn) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+![China Agricultural University College of Information and Electical Engineering](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://www.ciee.cau.edu.cn) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python) ![HTML-JavaScript](https://img.shields.io/badge/HTML-JavaScript-blue?style=flat-square&logo=html5) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/download.html)
+![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python) ![HTML Bootstrap](https://img.shields.io/badge/HTML-Bootstrapt-blue?style=flat-square&logo=html5) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/download.html)
 
 ## 目录
 
@@ -90,7 +90,7 @@ DDL：2020年7月5日
 
 #### 网页实现（HTML）
 
-1、实现了不同尺寸页面下，元素位置自动调整至最佳展示效果。
+1、采用Bootstrap框架，实现了不同尺寸页面下，元素位置自动调整至最佳展示效果。
 
 2、采用轮播图技术展示图片。
 
