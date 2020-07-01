@@ -32,9 +32,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 # 保存图片函数
 def _pic_link_save_as_png(pic_link, png_name, pic_path):
-    # pic_link为图片超链接
-    # pic_path为保存图片的相对地址
-    # png_name为图片名称
+
+    # Args:
+    #   pic_link: 一张图片的超链接
+    #   pic_path: 保存图片的相对地址
+    #   png_name: 图片名称
 
     # 存储地址检查
     if not os.path.exists(pic_path):
@@ -50,6 +52,7 @@ def _pic_link_save_as_png(pic_link, png_name, pic_path):
 def location_landmark_pic_download(
         browser, location_name="北京", landmark_number=5,
         pic_number_per_landmark=9, save_path=os.path.abspath('.')):
+
     """从马蜂窝（http://www.mafengwo.cn/）网站抓取地区景点的图片方法。
 
     利用Selenium自动化操作，打开马蜂窝首页，使用搜索栏搜索地区。
@@ -63,12 +66,12 @@ def location_landmark_pic_download(
         pic_number_per_landmark: 每个景点抓取的图片数
         save_path: 保存路径
 
-    Returns:
+    Return:
         返回布尔值。
         True表示输入的地区图片全部下载成功；
         False表示该地区指定数量的部分图片未下载成功。
 
-    Raises:
+    Raise:
         TimeoutException: 由于网页元素加载太久（默认10s）而报错。
         浏览器显示操作模式下，误操作改变自动操作的浏览器，关闭浏览器等行为皆有可能导致该错误的抛出。
         建议浏览器自动操作过程中，将浏览器置于置顶页面，并不进行其他操作，保证浏览器页面正常加载并识别。
@@ -80,14 +83,16 @@ def location_landmark_pic_download(
     # 打开景点页
     def _landmark_pic_download(site_link, location_path):
 
-        # site_link为景点网址
-        # location_path为保存图片路径
+        # Args:
+        #   site_link: 一个景点网址
+        #   location_path: 保存图片路径
 
         # 下载图片页的图片
         def _site_pic_download(pic_num, landmark_path):
 
-            # pic_num为下载图片数
-            # landmark_path保存相对索引
+            # Args:
+            #   pic_num: 下载图片数
+            #   landmark_path: 保存目录的相对索引
 
             # 获得图片所在元素
             try:
@@ -136,10 +141,8 @@ def location_landmark_pic_download(
         browser.close()
         browser.switch_to.window(browser.window_handles[-1])
 
-    # 构造保存地区的文件夹路径
-    location_path = save_path + "/" + location_name
-    # 打开马蜂窝，搜索相应地点
-    browser.get("https://www.mafengwo.cn/")
+    location_path = save_path + "/" + location_name  # 构造保存地区的文件夹路径
+    browser.get("https://www.mafengwo.cn/")  # 打开马蜂窝，搜索相应地点
     # 搜索地区
     try:
         WebDriverWait(browser, 10).until(
@@ -184,29 +187,19 @@ def location_landmark_pic_download(
 # 执行脚本
 if __name__ == "__main__":
     # 参数
-    # 爬取地点
-    LOCATIONS = ['陕西', '北京', '安徽']
-    # 爬取景点数
-    GET_LANDMARK_NUM = 5
-    # 每个景点爬取图片数
-    DOWNLOAD_PIC_NUM = 9
-    # 加载浏览器，括号为浏览器连接程序位置，需要与本机安装的浏览器版本一致
-    BROWSER_OBJ = webdriver.Chrome()
-    # 图片保存的根路径
-    ROOT_DIR = os.path.dirname(os.path.abspath('.')) + '/docs/pic'
-
-    # 下载失败的地区
-    FAIL_DOWNLOAD_LOCATIONS = []
-
+    LOCATIONS = ['陕西', '北京', '安徽']  # 爬取地点
+    GET_LANDMARK_NUM = 5  # 爬取景点数
+    DOWNLOAD_PIC_NUM = 9  # 每个景点爬取图片数
+    BROWSER_OBJ = webdriver.Chrome()  # 加载浏览器，括号为浏览器连接程序位置（默认为python.exe文件位置），需要与本机安装的浏览器版本一致
+    ROOT_DIR = os.path.dirname(os.path.abspath('.')) + '/docs/pic'  # 图片保存的根路径
+    FAIL_DOWNLOAD_LOCATIONS = []  # 下载失败的地区
     # 循环下载
     for location in LOCATIONS:
         if not location_landmark_pic_download(
                 BROWSER_OBJ, location, GET_LANDMARK_NUM, DOWNLOAD_PIC_NUM, ROOT_DIR):
             print(location + "下载失败")
             FAIL_DOWNLOAD_LOCATIONS.append(location)
-
-    # 退出浏览器
-    BROWSER_OBJ.quit()
+    BROWSER_OBJ.quit()  # 退出浏览器
     # 输出下载失败的地区
     if len(FAIL_DOWNLOAD_LOCATIONS) > 0:
         print("下载失败地点：", end='')
