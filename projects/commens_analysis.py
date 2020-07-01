@@ -84,17 +84,17 @@ def _cal_emotion_probs(good_comments, normal_comments, bad_comments, count_summa
     normal_opinion_count = int(re.findall(r'\d+', count_summary['中评'])[0])
     bad_opinion_count = int(re.findall(r'\d+', count_summary['差评'])[0])
     # 情感分析
-    if len(good_comments):
+    if len(good_comments) != 0:
         good_comments_prob = _analysis_comments(good_comments)
         good_comment_prob_avg = numpy.average(good_comments_prob)
     else:
         good_comment_prob_avg = 0
-    if len(normal_comments):
+    if len(normal_comments) != 0:
         normal_comments_prob = _analysis_comments(normal_comments)
         normal_comment_prob_avg = numpy.average(normal_comments_prob)
     else:
         normal_comment_prob_avg = 0
-    if len(bad_comments):
+    if len(bad_comments) != 0:
         bad_comments_prob = _analysis_comments(bad_comments)
         bad_comment_prob_avg = numpy.average(bad_comments_prob)
     else:
