@@ -1,6 +1,6 @@
 # Light Web Crawler for  Tourists Attraction
 
-![China Agricultural University College of Information and Electical Engineering](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://www.ciee.cau.edu.cn) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+![China Agricultural University College of Information and Electical Engineering](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://ciee.cau.edu.cn/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 ![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python) ![HTML Bootstrap](https://img.shields.io/badge/HTML-Bootstrapt-blue?style=flat-square&logo=html5) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/download.html)
 
@@ -125,20 +125,18 @@ pip install *
 eg. pip install selenium>=3.141.0
 ```
 
-此外，还需下载与系统和浏览器版本匹配的驱动程序（示例程序默认使用Google Chrome，测试稳定）。下载完成后将驱动程序文件移动至运行的Python3环境目录下的 `/bin` 文件夹中。
+此外，还需下载与系统和浏览器版本匹配的驱动程序（示例程序默认使用Google Chrome，Google Chrome 测试稳定）。下载完成后将驱动程序文件移动至运行的Python3环境目录下的 `/bin` 文件夹中。
 
 Google Chrome驱动下载：<a href='https://npm.taobao.org/mirrors/chromedriver'> npm.taobao.org/mirrors/chromedriver </a>
 
 ## 文件目录
 
 ```
-├── Readme.md                   // 项目说明书
+├── README.md                   // 项目说明书
 ├── requirements.txt            // 依赖的外部Python包列表
 ├── test                        // 项目的测试文件夹
 ├── project                     // 项目主体部分的代码
 │   ├── landmarkInfo.py              // 基本信息爬虫
-│   ├── 爬取城市景点信息.ipynb          // 基本信息爬虫
-│   ├── geoCode.py                   // 经纬度获取
 │   ├── landmarkComment.py           // 评论爬虫
 │   ├── landmark_pic_crawler.py      // 图片爬虫
 │   ├── commens_analysis.py          // 评论分析
@@ -153,11 +151,13 @@ Google Chrome驱动下载：<a href='https://npm.taobao.org/mirrors/chromedriver
 │   │           ├── 中评.CSV                       // 中评评论
 │   │           ├── 差评.CSV                       // 差评评论
 │   │           ├── *各类评论数统计.json             // 景点评价数统计
+│   │           ├── comments wordcloud.png        // 评价词云
 │   │           └── comments analysis.json        // 评论词频和情感概率
 │   └── pic                          // 景点图片
 │       └── *                               // 各地区文件夹
 │           └── *                                  // 各景点文件夹
-│               └── *.png                                // 各景点文件夹
+│               └── *.png                                // 景点图片
+├── sources                          // 网页文件夹
 └── LICENSE
 ```
 
