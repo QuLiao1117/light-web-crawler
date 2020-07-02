@@ -2,7 +2,7 @@
 
 ![China Agricultural University College of Information and Electical Engineering](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://ciee.cau.edu.cn/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python) ![HTML Bootstrap](https://img.shields.io/badge/HTML-Bootstrapt-blue?style=flat-square&logo=html5) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/download.html)
+![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python) ![HTML Bootstrap](https://img.shields.io/badge/HTML-Bootstrap-blue?style=flat-square&logo=html5) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/download.html)
 
 ## 目录
 
@@ -15,9 +15,12 @@
   - [数据获取](#数据获取（Python3）)
   - [网页实现](#网页实现（HTML）)
   - [数据处理](#数据处理（Python3）)
-  - [文件规范](#文件规范)
+  - [文档规范](#文档规范)
 - [使用指南](#使用指南)
   - [环境配置](#环境配置)
+- [API](#API)
+  - [数据获取](#数据获取API)
+  - [数据处理](#数据处理API)
 - [文件目录](#文件目录)
 - [项目成员](#项目成员)
 - [致谢](#致谢)
@@ -55,8 +58,8 @@
 
 ##### 分工
 
-1. 李海霞：地图首页
-2. 周芳宇：省份景点Top5
+1. 李海霞：地图首页（已完成）
+2. 周芳宇：省份景点Top5（已完成）
 3. 瞿李傲：景点详细页
 4. 林邦皓：数据处理（已完成）
 
@@ -66,11 +69,13 @@ DDL：2020年7月3日
 
 ### 第三阶段：完善各项内容
 
+编写示例程序
+
 制作总结报告
 
 规范代码及文件
 
-统一数据编码
+统一数据编码、接口、引用
 
 DDL：2020年7月5日
 
@@ -78,41 +83,41 @@ DDL：2020年7月5日
 
 #### 数据获取（Python3）
 
-1、使用Selenium自动化操作访问网站。
+1. 使用Selenium自动化操作访问网站。
 
-优点：模拟人的操作行为，避免被反爬虫机制判定为爬虫操作
+   优点：模拟人的操作行为，避免被反爬虫机制判定为爬虫操作
 
-不足：抓取速度较慢
+   不足：抓取速度较慢
 
-2、封装为API接口可直接调用，亦可以直接运行函数文件，其中含有自动运行的脚本。
+2. 封装为API接口可直接调用，亦可以直接运行函数文件，其中含有自动运行的脚本。
 
-3、提供一个同时调用所有API的示范代码，使用多线程技术，加快获取速度。（待完成）
+3. 提供一个同时调用所有API的示例程序，使用多线程技术，加快获取速度。（待完成）
 
 #### 网页实现（HTML）
 
-1、采用Bootstrap框架，实现了不同尺寸页面下，元素位置自动调整至最佳展示效果。
+1. 采用Bootstrap框架，实现了不同尺寸页面下，元素位置自动调整至最佳展示效果。
 
-2、采用轮播图技术展示图片。
+2. 采用轮播图技术展示图片。
 
-3、使用导航栏跳转。
+3. 使用导航栏跳转。
+4. 采用ECCHARTS实现地图展示。
 
 #### 数据处理（Python3）
 
-1、利用PaddlePaddle深度学习框架，训练序列标注（双向GRU）网络模型实现评论分词。
+1. 利用PaddlePaddle深度学习框架，训练序列标注（双向GRU）网络模型实现评论分词。
 
-优点：贴合中文词汇含义的分词模型
+   优点：贴合中文词汇含义的分词模型
 
-2、使用SnowNLP自有训练模型计算情感倾向。
+2. 使用SnowNLP自有训练模型计算情感倾向。
 
-3、使用四川大学机器智能实验室、哈工大停用词库。
+3. 使用四川大学机器智能实验室、哈工大停用词库。
 
-#### 文件规范
+#### 文档规范
 
-1、Python文件使用pylint检测代码规范。
+1. Python文件使用pylint检测代码规范。
+2. Python、HTML、JavaScript、CSS、json文件遵循Google风格。（待完成）
 
-2、Python、HTML、JavaScript、CSS、json文件遵循Google风格。（待完成）
-
-3、CSV文件遵循IETF的RFC4180标准。（待完成）
+3. CSV文件遵循IETF的RFC4180标准。（待完成）
 
 ## 使用指南
 
@@ -121,13 +126,84 @@ DDL：2020年7月5日
 在运行的Python3环境中安装requirements.txt文件中列出的所有外部Python包。
 
 ```shell
-pip install *
-eg. pip install selenium>=3.141.0
+$ pip install *
+eg. $ pip install selenium>=3.141.0
 ```
 
 此外，还需下载与系统和浏览器版本匹配的驱动程序（示例程序默认使用Google Chrome，Google Chrome 测试稳定）。下载完成后将驱动程序文件移动至运行的Python3环境目录下的 `/bin` 文件夹中。
 
 Google Chrome驱动下载：<a href='https://npm.taobao.org/mirrors/chromedriver'> npm.taobao.org/mirrors/chromedriver </a>
+
+## API
+
+#### 数据获取API
+
+##### location_landmark_pic_download
+
+从马蜂窝网站抓取地区景点图片
+
+```python
+import landmark_pic_crawler
+location_landmark_pic_download(browser, location_name="北京", landmark_number=5,
+        pic_number_per_landmark=9, save_path=os.path.abspath('.'))
+```
+
+###### 参数
+
+browser: 一个Selenium浏览器对象
+location_name: 搜索的地区名称（默认为"北京"）
+landmark_number: 计划在选定的地区抓取的景点数量（默认为5）
+pic_number_per_landmark: 每个景点抓取的图片数（默认为9）
+save_path: 保存路径（默认为文件所在目录）
+
+###### 返回值
+
+布尔值
+True表示输入的地区图片全部下载成功；
+False表示该地区指定数量的部分图片未下载成功。
+
+###### 事件
+
+TimeoutException: 由于网页元素加载太久（默认10s）而报错。
+
+#### 数据处理API
+
+##### cal_words_freq
+
+对给出的文本list进行分词
+
+```python
+import comments_analysis
+cal_words_freq(texts, stopwords)
+```
+
+###### 参数
+
+texts: 一组评论list
+stopwords: 停止词的list
+
+###### 返回值
+
+字典对象
+key为词，value为频率
+
+##### texts_analysis
+
+计算文本整体情感概率并进行词频计算
+
+```python
+import comments_analysis
+texts_analysis(comments_file_path, stopwords_file_path):
+```
+
+###### 参数
+
+comments_file_path: 所有评论的文件夹路径
+stopwords_file_path: 停用词文件路径
+
+###### 输出
+
+在comments_file_path目录中创建comments analysis.json文件，json包含整体情感概率和词频数据；同时生成comments wordcloud.png词云图
 
 ## 文件目录
 
@@ -135,7 +211,7 @@ Google Chrome驱动下载：<a href='https://npm.taobao.org/mirrors/chromedriver
 ├── README.md                   // 项目说明书
 ├── requirements.txt            // 依赖的外部Python包列表
 ├── test                        // 项目的测试文件夹
-├── project                     // 项目主体部分的代码
+├── project                     // 项目数据获取代码
 │   ├── landmarkInfo.py              // 基本信息爬虫
 │   ├── landmarkComment.py           // 评论爬虫
 │   ├── landmark_pic_crawler.py      // 图片爬虫

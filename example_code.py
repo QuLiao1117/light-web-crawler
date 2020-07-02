@@ -16,9 +16,11 @@ Args:
 """
 
 import os
-
+import sys
 from selenium import webdriver
 
+FILE_PATH = os.path.abspath('.')
+sys.path.append(FILE_PATH + '/projects')
 from projects import comments_analysis as cm
 from projects import landmark_pic_crawler as lpc
 
@@ -27,7 +29,6 @@ LOCATIONS = ['陕西', '北京', '安徽']  # 爬取地点
 GET_LANDMARK_NUM = 5  # 爬取景点数
 DOWNLOAD_PIC_NUM = 9  # 每个景点爬取图片数
 BROWSER_OBJ = webdriver.Chrome()  # 加载Chrome浏览器，括号为浏览器连接程序位置（默认为python.exe文件位置），需要与本机安装的浏览器版本一致
-FILE_PATH = os.path.dirname()
 
 # 数据抓取
 FAIL_DOWNLOAD_LOCATIONS = []  # 下载失败的地区
@@ -46,4 +47,4 @@ else:
 BROWSER_OBJ.quit()  # 退出浏览器
 
 # 数据分析
-cm.comments_analysis(FILE_PATH + '/comments', FILE_PATH + '/projects/stopwords/stopwords.txt')
+cm.texts_analysis(FILE_PATH + '/comments', FILE_PATH + '/projects/stopwords/stopwords.txt')
