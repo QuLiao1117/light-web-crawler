@@ -30,13 +30,11 @@ from projects import landmark_pic_crawler as lpc
 LOCATIONS = ['陕西', '北京', '安徽']  # 爬取地点
 GET_LANDMARK_NUM = 5  # 爬取景点数
 DOWNLOAD_PIC_NUM = 9  # 每个景点爬取图片数
-BROWSER_OBJ_1 = webdriver.Chrome()  # 加载Chrome浏览器，括号为浏览器连接程序位置（默认为python.exe文件位置），需要与本机安装的浏览器版本一致
-BROWSER_OBJ_2 = webdriver.Chrome()
-BROWSER_OBJ_3 = webdriver.Chrome()
 
 
 # 图片抓取
-def _pic_clawer(browser_obj):
+def _pic_clawer():
+    browser_obj = webdriver.Chrome()
     fail_download_locations = []  # 下载失败的地区
     # 循环下载
     for location in LOCATIONS:
@@ -57,7 +55,7 @@ def _pic_clawer(browser_obj):
 
 
 pool = Pool(3)
-pool.apply_async(_pic_clawer, args=(BROWSER_OBJ_1))
+pool.apply_async(_pic_clawer, args=())
 pool.apply_async(cm.texts_analysis, args=(FILE_PATH + '/comments', FILE_PATH + '/projects/stopwords/stopwords.txt'))
 pool.close()
 pool.join()
