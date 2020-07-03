@@ -31,12 +31,16 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 # 保存图片函数
-def _pic_link_save_as_png(pic_link, png_name, pic_path):
+def pic_link_save_as_png(pic_link, png_name, pic_path):
 
-    # Args:
-    #   pic_link: 一张图片的超链接
-    #   pic_path: 保存图片的相对地址
-    #   png_name: 图片名称
+    """给定图片链接，下载图片并保存为png文件
+
+    Args:
+        pic_link: 一张图片链接
+        png_name: 图片名称
+        pic_path: 图片保存路径
+
+    """
 
     # 存储地址检查
     if not os.path.exists(pic_path):
@@ -112,7 +116,7 @@ def location_landmark_pic_download(
                 thumbnail_link = elements_have_pic[pic_count].get_attribute('src')
                 jpeg_link = thumbnail_link[0:re.search(r'\?', thumbnail_link).span()[0]]
                 print(jpeg_link)
-                _pic_link_save_as_png(jpeg_link, pic_count + 1, landmark_path)
+                pic_link_save_as_png(jpeg_link, pic_count + 1, landmark_path)
                 print("  第%d张下载完成" % (pic_count + 1))
 
         # 打开景点页
