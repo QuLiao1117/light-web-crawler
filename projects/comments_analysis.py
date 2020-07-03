@@ -109,13 +109,19 @@ def _cal_emotion_probs(good_comments, normal_comments, bad_comments, count_summa
 
 
 # 计算所给文本的词频
-def _cal_words_freq(texts, stopwords):
-    # Args:
-    #   texts: 一组评论list
-    #   stopwords: 停止词的list
+def cal_words_freq(texts, stopwords):
+    """对给出的文本list进行分词
 
-    # Return：
-    #   一个字典对象，key为词，value为频率
+    使用PaddlePaddle序列标注（双向GRU）网络模型标注分词
+
+    Args:
+       texts: 一组评论list
+       stopwords: 停止词的list
+
+    Return：
+       一个字典对象，key为词，value为频率
+
+    """
 
     segments = {}
     jieba.enable_paddle()  # 激活paddle训练模型
@@ -134,24 +140,28 @@ def _cal_words_freq(texts, stopwords):
 
 
 # 主要函数
-def comments_analysis(comment_file_path, stopwords_file_path):
-    """分析马蜂窝景点中爬取的评论内容，计算情感概率并进行词频计算脚本。
+def texts_analysis(comments_file_path, stopwords_file_path):
+    """分析马蜂窝景点中爬取的评论内容，计算情感概率并进行词频计算。
 
     使用snowNLP训练好的模型计算评论情感概率。
     使用jieba分词（paddle训练模型）计算词频。
     结果输出在原目录的json中，并导出词云。
 
     Args:
-        comment_file_path: 所有评论的文件夹路径
-        stopwords_file_path: 停用词路径
+        comments_file_path: 所有评论的文件夹路径
+        stopwords_file_path: 停用词文件路径
+
+    输出:
+        在comments_file_path目录中创建comments analysis.json文件，json包含整体情感概率和词频数据；
+        同时生成comments wordcloud.png词云图。
 
     """
 
-    locations = _listdir_no_hidden(comment_file_path)
+    locations = _listdir_no_hidden(comments_file_path)
     for location in locations:
         # 构造文件路径
         print(location)
-        location_file_path = comment_file_path + '/' + location
+        location_file_path = comments_file_path + '/' + location
         landmarks = os.listdir(location_file_path)
         for landmark in landmarks:
             landmark_file_path = location_file_path + '/' + landmark
@@ -186,7 +196,7 @@ def comments_analysis(comment_file_path, stopwords_file_path):
                 good_comments, normal_comments, bad_comments, count_summary)
             # 词频计算
             stopwords = _get_stopwords_list(stopwords_file_path)
-            landmark_words_freq = _cal_words_freq(comments, stopwords)
+            landmark_words_freq = cal_words_freq(comments, stopwords)
             # 输出json
             json_data = {"emotional_prob": landmark_prob}
             json_data.update({"words_freq": landmark_words_freq})
@@ -210,4 +220,4 @@ if __name__ == "__main__":
     FILE_PATH = '../docs/comments'
     STOPWORDS_FILE_PATH = os.path.dirname(
         os.path.abspath('.')) + '/projects/stopwords/stopwords.txt'
-    comments_analysis(FILE_PATH, STOPWORDS_FILE_PATH)
+    texts_analysis(FILE_PATH, STOPWORDS_FILE_PATH)
