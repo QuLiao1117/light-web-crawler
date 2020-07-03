@@ -59,3 +59,6 @@ def _pic_clawer(browser_obj):
 pool = Pool(3)
 pool.apply_async(_pic_clawer, args=(BROWSER_OBJ_1))
 pool.apply_async(cm.texts_analysis, args=(FILE_PATH + '/comments', FILE_PATH + '/projects/stopwords/stopwords.txt'))
+pool.close()
+pool.join()
+print('示例程序运行完毕！')
