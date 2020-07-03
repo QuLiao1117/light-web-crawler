@@ -1,7 +1,5 @@
 # Light Web Crawler for  Tourists Attraction
 
-![Team Logo](https://github.com/QuLiao1117/light-web-crawler/blob/master/sources/HEAD.png)
-
 [![China Agricultural University College of Information and Electical Engineering](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://ciee.cau.edu.cn/)](https://www.cau.edu.cn) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 [![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python)](https://www.python.org/) [![HTML Bootstrap](https://img.shields.io/badge/HTML-Bootstrap-blue?style=flat-square&logo=html5)](https://getbootstrap.com/) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/index.html)
@@ -33,7 +31,9 @@
 
 ## 项目背景
 
-本项目为中国农业大学2019-2020年夏季学期web技术及数据采集与处理实训课程大作业。目标为以爬虫实现为基础，综合展示代码学习成果。本项目以<a href="https://www.mafengwo.cn/">马蜂窝网站</a>景点数据为爬取目标，抓取景点相关数据，最后通过网页的形式展示爬取结果。考虑到仓库大小及不同省份和不同景点均需单独制作页面，项目只选取3个省份的Top5的景点进行样例展示。抓取代码提供API，直接调用即可。
+本项目为中国农业大学2019-2020年夏季学期web技术及数据采集与处理实训课程大作业。目标为以爬虫实现为基础，综合展示代码学习成果。本项目以<a href="https://www.mafengwo.cn/">马蜂窝网站</a>景点数据为爬取目标，抓取景点相关数据，最后通过网页的形式展示爬取结果。
+
+考虑到仓库大小及不同省份和不同景点均需单独制作页面，项目只选取3个省份的Top5的景点进行样例展示。抓取代码提供API，直接调用即可；同时提供示例程序运行所有API。
 
 ## 项目进度
 
@@ -57,7 +57,7 @@
 
 地图首页：景点轮播图 + echarts地图
 
-省份景点Top5：具体地点景点导航
+省份景点Top5：具体地点景点页导航
 
 景点详细：基本信息、景点图、评论词云、条形图、情感倾向
 
@@ -65,7 +65,7 @@
 
 1. 李海霞：地图首页（已完成）
 2. 周芳宇：省份景点Top5（已完成）
-3. 瞿李傲：景点详细页
+3. 瞿李傲：景点详细页（已完成）
 4. 林邦皓：数据处理（已完成）
 
 要求：至少每两天提交内容并讨论
@@ -74,17 +74,20 @@ DDL：2020年7月3日
 
 ### 第三阶段：完善各项内容
 
-编写示例程序
+1. 网页上传到服务器
+2. 编写示例程序（基本完成）
+3. 制作总结视频
+4. 优化代码
+5. 规范文档
 
-制作总结报告
+6. 统一数据编码、接口、引用
 
-规范代码及文件
-
-统一数据编码、接口、引用
 
 DDL：2020年7月5日
 
 ## 项目亮点
+
+项目过程
 
 #### 数据获取（Python3）
 
@@ -105,7 +108,7 @@ DDL：2020年7月5日
 2. 采用轮播图技术展示图片。
 
 3. 使用导航栏跳转。
-4. 采用ECCHARTS实现地图展示。
+4. 采用ECHARTS实现地图展示。
 
 #### 数据处理（Python3）
 
@@ -128,7 +131,14 @@ DDL：2020年7月5日
 
 #### 环境配置
 
-在运行的Python3环境中安装requirements.txt文件中列出的所有外部Python包。
+最少下载内容
+
+```
+文件夹：project和sources
+示例程序：example_code.py
+```
+
+在运行的Python3环境中安装`requirements.txt`文件中列出的所有外部Python包。
 
 ```shell
 $ pip install *
@@ -147,7 +157,7 @@ Google Chrome驱动下载：<a href='https://npm.taobao.org/mirrors/chromedriver
 FILE_PATH = os.path.abspath('.')
 ```
 
-指明项目函数API和停用词的projects文件夹所在目录，同时表示抓取数据的存储目录。
+指明项目函数API和停用词的`/projects`文件夹所在目录，同时表示抓取数据的存储目录。
 
 ###### 默认值
 
@@ -251,6 +261,8 @@ False表示该地区指定数量的部分图片未下载成功。
 
 TimeoutException: 由于网页元素加载太久（默认10s）而报错。
 
+------
+
 ##### pic_link_save_as_png
 
 ```python
@@ -267,6 +279,8 @@ pic_link: 一张图片链接
 png_name: 图片名称
 
 pic_path: png图片保存路径
+
+------
 
 #### 数据处理API
 
@@ -290,6 +304,8 @@ stopwords: 停止词的list
 字典对象
 
 key为词，value为频率
+
+------
 
 ##### texts_analysis
 
@@ -365,7 +381,7 @@ stopwords_file_path: 停用词文件路径
 
 ## 致谢
 
-非常感谢课程老师和助教对我们小组技术和代码规范方面的支持！
+非常感谢课程教授和助教对我们小组技术和代码规范方面的支持！
 
 <a href="http://faculty.cau.edu.cn/xxdqxy/wcc/list.htm">吴才聪教授</a>
 
