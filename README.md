@@ -21,9 +21,11 @@
 - [使用指南](#使用指南)
   - [环境配置](#环境配置)
   - [示例程序变量](#示例程序变量)
+  - [运行示例程序](#运行示例程序)
 - [API](#API)
   - [数据获取](#数据获取API)
   - [数据处理](#数据处理API)
+- [已知问题](#已知问题)
 - [文件目录](#文件目录)
 - [项目成员](#项目成员)
 - [致谢](#致谢)
@@ -94,7 +96,7 @@ DDL：2020年7月5日
 
 2. 封装为API接口可直接调用，亦可以直接运行函数文件，其中含有自动运行的脚本。
 
-3. 提供一个同时调用所有API的示例程序，使用多线程技术，加快获取速度。（待完成）
+3. 提供一个同时调用所有API的示例程序，使用多进程技术，加快获取速度。
 
 #### 网页实现（HTML）
 
@@ -133,7 +135,7 @@ $ pip install *
 Eg. $ pip install selenium>=3.141.0
 ```
 
-此外，还需下载与系统和浏览器版本匹配的驱动程序（示例程序默认使用Google Chrome，Google Chrome 测试稳定）。下载完成后将驱动程序文件移动至运行的Python3环境目录下的 `/bin` 文件夹中。
+此外，还需下载与系统和浏览器版本匹配的驱动程序（示例程序默认使用Google Chrome，Chrome 测试稳定）。下载完成后将驱动程序文件移动至运行的Python3环境目录下的 `/bin` 文件夹中。
 
 Google Chrome驱动下载：<a href='https://npm.taobao.org/mirrors/chromedriver'> npm.taobao.org/mirrors/chromedriver </a>
 
@@ -154,19 +156,19 @@ FILE_PATH = os.path.abspath('.')
 ##### LOCATIONS
 
 ```python
-LOCATIONS = ['陕西', '北京', '安徽']
+LOCATIONS = list
 ```
 
 包含要搜索的地区名称，需为专有名词（建议为省、直辖市）
 
 ###### 默认值
 
-陕西、北京和安徽
+['陕西', '北京', '安徽']
 
 ##### GET_LANDMARK_NUM
 
 ```python
-GET_LANDMARK_NUM = 5
+GET_LANDMARK_NUM = int
 ```
 
 每个搜索地区抓取的景点数量
@@ -178,7 +180,7 @@ GET_LANDMARK_NUM = 5
 ##### DOWNLOAD_PIC_NUM
 
 ```python
-DOWNLOAD_PIC_NUM = 9
+DOWNLOAD_PIC_NUM = int
 ```
 
 每个景点抓取的图片数量
@@ -187,23 +189,29 @@ DOWNLOAD_PIC_NUM = 9
 
 9
 
-##### BROWSER_OBJ
+##### PROCESSING_POOL
 
 ```python
-BROWSER_OBJ = webdriver.Chrome()
+PROCESSING_POOL = Pool(int)
 ```
 
-一个Selenium浏览器对象
-
-如果程序无法找到浏览器驱动程序，在括号中输入 ↓
-
-```python
-executable_path = "浏览器驱动程序地址"
-```
+最多同时运行进程数
 
 ###### 默认值
 
-Chrome浏览器对象
+Pool(3)
+
+#### 运行示例程序
+
+如需更换浏览器对象或者添加浏览器驱动程序路径，替换示例程序中如下标明的文字。
+
+```python
+def _pic_clawer():
+browser_obj = webdriver."浏览器名称"("驱动程序路径")
+...
+```
+
+直接示例运行程序，获取和处理的数据结果保存在`$FILE_PATH$/docs`文档目录中。
 
 ## API
 
@@ -242,6 +250,23 @@ False表示该地区指定数量的部分图片未下载成功。
 ###### 事件
 
 TimeoutException: 由于网页元素加载太久（默认10s）而报错。
+
+##### pic_link_save_as_png
+
+```python
+import landmark_pic_crawler
+pic_link_save_as_png(pic_link, png_name, pic_path)
+```
+
+保存链接图片为png格式
+
+###### 参数
+
+pic_link: 一张图片链接
+
+png_name: 图片名称
+
+pic_path: png图片保存路径
 
 #### 数据处理API
 
@@ -283,7 +308,12 @@ stopwords_file_path: 停用词文件路径
 
 ###### 输出
 
-在comments_file_path目录中创建comments analysis.json文件，json包含整体情感概率和词频数据；同时生成comments wordcloud.png词云图
+在comments_file_path目录中创建comments analysis.json文件，json包含整体情感概率和词频数据；同时生成comments wordcloud.png词云图。
+
+## 已知问题
+
+1. 数据获取API均无法正常运行Safari浏览器。
+2. 若`$FILE_PATH$`目录中已有`/docs`文件夹，则会导致数据处理出错。
 
 ## 文件目录
 
@@ -291,6 +321,7 @@ stopwords_file_path: 停用词文件路径
 ├── README.md                   // 项目说明书
 ├── requirements.txt            // 依赖的外部Python包列表
 ├── test                        // 项目的测试文件夹
+├── example_code.py             // 示例程序
 ├── project                     // 项目数据获取代码
 │   ├── landmarkInfo.py              // 基本信息爬虫
 │   ├── landmarkComment.py           // 评论爬虫

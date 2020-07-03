@@ -10,7 +10,7 @@ Args:
     LOCATIONS: 计划抓取图片的地区（需为准确的专有名词，即在马蜂窝中可直接搜索到）
     GET_LANDMARK_NUM: 计划在选定的地区抓取的景点数量
     DOWNLOAD_PIC_NUM: 每个景点抓取的图片数
-    BROWSER_OBJ_1, BROWSER_OBJ_2, BROWSER_OBJ_3: 一个Selenium浏览器对象
+    PROCESSING_POOL: 指定最大运行进程数
 
 """
 
@@ -30,7 +30,7 @@ from projects import landmark_pic_crawler as lpc
 LOCATIONS = ['陕西', '北京', '安徽']  # 爬取地点
 GET_LANDMARK_NUM = 5  # 爬取景点数
 DOWNLOAD_PIC_NUM = 9  # 每个景点爬取图片数
-
+PROCESSING_POOL = Pool(3)  # 最多同时运行进程数
 
 # 图片抓取
 def _pic_clawer():
@@ -54,9 +54,11 @@ def _pic_clawer():
 # 数据分析
 
 
-pool = Pool(3)
-pool.apply_async(_pic_clawer, args=())
-pool.apply_async(cm.texts_analysis, args=(FILE_PATH + '/docs/comments', FILE_PATH + '/projects/stopwords/stopwords.txt'))
-pool.close()
-pool.join()
+
+PROCESSING_POOL.apply_async(_pic_clawer, args=())
+PROCESSING_POOL.apply_async(cm.texts_analysis,
+                            args=(FILE_PATH + '/docs/comments',
+                                FILE_PATH + '/projects/stopwords/stopwords.txt'))
+PROCESSING_POOL.close()
+PROCESSING_POOL.join()
 print('示例程序运行完毕！')
