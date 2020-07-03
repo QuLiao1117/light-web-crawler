@@ -56,7 +56,7 @@ def _pic_clawer():
 
 pool = Pool(3)
 pool.apply_async(_pic_clawer, args=())
-pool.apply_async(cm.texts_analysis, args=(FILE_PATH + '/comments', FILE_PATH + '/projects/stopwords/stopwords.txt'))
+pool.apply_async(cm.texts_analysis, args=(FILE_PATH + '/docs/comments', FILE_PATH + '/projects/stopwords/stopwords.txt'))
 pool.close()
 pool.join()
 print('示例程序运行完毕！')
