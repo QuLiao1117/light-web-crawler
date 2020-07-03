@@ -17,9 +17,11 @@ Args:
 
 import os
 import sys
+
 from selenium import webdriver
 
-FILE_PATH = os.path.abspath('.')
+FILE_PATH = os.path.abspath('.')  # projects项目函数API地址，默认与示例程序同目录
+
 sys.path.append(FILE_PATH + '/projects')
 from projects import comments_analysis as cm
 from projects import landmark_pic_crawler as lpc

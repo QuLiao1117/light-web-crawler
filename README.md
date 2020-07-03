@@ -1,8 +1,10 @@
 # Light Web Crawler for  Tourists Attraction
 
-![China Agricultural University College of Information and Electical Engineering](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://ciee.cau.edu.cn/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+![Team Logo](https://github.com/QuLiao1117/light-web-crawler/blob/master/sources/HEAD.png)
 
-![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python) ![HTML Bootstrap](https://img.shields.io/badge/HTML-Bootstrap-blue?style=flat-square&logo=html5) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/download.html)
+[![China Agricultural University College of Information and Electical Engineering](https://img.shields.io/static/v1?label=CAU&message=CIEE&color=R0-G135-B60&link=https://www.cau.edu.cn&link=http://ciee.cau.edu.cn/)](https://www.cau.edu.cn) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+
+[![Python 3.7](https://img.shields.io/badge/Python-3.7-blue?style=flat-square&logo=python)](https://www.python.org/) [![HTML Bootstrap](https://img.shields.io/badge/HTML-Bootstrap-blue?style=flat-square&logo=html5)](https://getbootstrap.com/) [![Selenium Python](https://img.shields.io/badge/Selenium-Python-orange?style=flat-square)](https://www.selenium.dev/) [![ECHARTS 4.8.0](https://img.shields.io/badge/ECHARTS-4.8.0-orange?style=flat-square&logo=apache-echarts)](https://echarts.apache.org/zh/index.html)
 
 ## 目录
 
@@ -18,6 +20,7 @@
   - [文档规范](#文档规范)
 - [使用指南](#使用指南)
   - [环境配置](#环境配置)
+  - [示例程序变量](#示例程序变量)
 - [API](#API)
   - [数据获取](#数据获取API)
   - [数据处理](#数据处理API)
@@ -127,12 +130,80 @@ DDL：2020年7月5日
 
 ```shell
 $ pip install *
-eg. $ pip install selenium>=3.141.0
+Eg. $ pip install selenium>=3.141.0
 ```
 
 此外，还需下载与系统和浏览器版本匹配的驱动程序（示例程序默认使用Google Chrome，Google Chrome 测试稳定）。下载完成后将驱动程序文件移动至运行的Python3环境目录下的 `/bin` 文件夹中。
 
 Google Chrome驱动下载：<a href='https://npm.taobao.org/mirrors/chromedriver'> npm.taobao.org/mirrors/chromedriver </a>
+
+#### 示例程序变量
+
+##### FILE_PATH
+
+```python
+FILE_PATH = os.path.abspath('.')
+```
+
+指明项目函数API和停用词的projects文件夹所在目录，同时表示抓取数据的存储目录。
+
+###### 默认值
+
+示例程序所在目录
+
+##### LOCATIONS
+
+```python
+LOCATIONS = ['陕西', '北京', '安徽']
+```
+
+包含要搜索的地区名称，需为专有名词（建议为省、直辖市）
+
+###### 默认值
+
+陕西、北京和安徽
+
+##### GET_LANDMARK_NUM
+
+```python
+GET_LANDMARK_NUM = 5
+```
+
+每个搜索地区抓取的景点数量
+
+###### 默认值
+
+5
+
+##### DOWNLOAD_PIC_NUM
+
+```python
+DOWNLOAD_PIC_NUM = 9
+```
+
+每个景点抓取的图片数量
+
+###### 默认值
+
+9
+
+##### BROWSER_OBJ
+
+```python
+BROWSER_OBJ = webdriver.Chrome()
+```
+
+一个Selenium浏览器对象
+
+如果程序无法找到浏览器驱动程序，在括号中输入 ↓
+
+```python
+executable_path = "浏览器驱动程序地址"
+```
+
+###### 默认值
+
+Chrome浏览器对象
 
 ## API
 
@@ -151,15 +222,21 @@ location_landmark_pic_download(browser, location_name="北京", landmark_number=
 ###### 参数
 
 browser: 一个Selenium浏览器对象
+
 location_name: 搜索的地区名称（默认为"北京"）
+
 landmark_number: 计划在选定的地区抓取的景点数量（默认为5）
+
 pic_number_per_landmark: 每个景点抓取的图片数（默认为9）
+
 save_path: 保存路径（默认为文件所在目录）
 
 ###### 返回值
 
 布尔值
+
 True表示输入的地区图片全部下载成功；
+
 False表示该地区指定数量的部分图片未下载成功。
 
 ###### 事件
@@ -180,11 +257,13 @@ cal_words_freq(texts, stopwords)
 ###### 参数
 
 texts: 一组评论list
+
 stopwords: 停止词的list
 
 ###### 返回值
 
 字典对象
+
 key为词，value为频率
 
 ##### texts_analysis
@@ -199,6 +278,7 @@ texts_analysis(comments_file_path, stopwords_file_path):
 ###### 参数
 
 comments_file_path: 所有评论的文件夹路径
+
 stopwords_file_path: 停用词文件路径
 
 ###### 输出
@@ -220,6 +300,7 @@ stopwords_file_path: 停用词文件路径
 │       └── stopword.txt
 ├── docs                        // 项目相关数据
 │   ├── city_landmark_info           // 景点基本信息
+│   │   └── *.json                          // 各地区景点信息
 │   ├── comments                     // 景点评论相关
 │   │   └── *                        // 各地区文件夹
 │   │       └── *                           // 各景点文件夹
@@ -234,6 +315,10 @@ stopwords_file_path: 停用词文件路径
 │           └── *                                  // 各景点文件夹
 │               └── *.png                                // 景点图片
 ├── sources                          // 网页文件夹
+│   ├── HEAD.png                            // 项目Logo
+│   ├── HomePage                            // 首页HTML文件夹
+│   ├── scene-intro                         // 各景点HTML文件夹
+│   └──                                     // 
 └── LICENSE
 ```
 
@@ -251,7 +336,7 @@ stopwords_file_path: 停用词文件路径
 
 非常感谢课程老师和助教对我们小组技术和代码规范方面的支持！
 
-<a href="http://faculty.cau.edu.cn/xxdqxy/wcc/list.htm">吴才聪老师</a>
+<a href="http://faculty.cau.edu.cn/xxdqxy/wcc/list.htm">吴才聪教授</a>
 
 <a href="https://github.com/Terrensou">@cauqiaopeng (小乔帮主)</a>
 
