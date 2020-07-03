@@ -58,7 +58,7 @@ def _pic_clawer():
 PROCESSING_POOL.apply_async(_pic_clawer, args=())
 PROCESSING_POOL.apply_async(cm.texts_analysis,
                             args=(FILE_PATH + '/docs/comments',
-                                FILE_PATH + '/projects/stopwords/stopwords.txt'))
+                                  FILE_PATH + '/projects/stopwords/stopwords.txt'))
 PROCESSING_POOL.close()
 PROCESSING_POOL.join()
 print('示例程序运行完毕！')
