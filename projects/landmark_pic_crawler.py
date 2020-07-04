@@ -47,7 +47,7 @@ def pic_link_save_as_png(pic_link, png_name, pic_path):
     if not os.path.exists(pic_path):
         os.makedirs(pic_path)
     pic_binary_data = requests.get(pic_link)
-    png_path = pic_path + '/' + str(png_name) + ".png"
+    png_path = pic_path / (str(png_name) + ".png")
     # 保存图片
     with open(png_path, "wb") as png_file:
         for chunk in pic_binary_data:
