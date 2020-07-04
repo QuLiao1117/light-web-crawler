@@ -46,7 +46,6 @@ def get_place_top5_comments(location, driver, landmark_number=5, save_path=os.pa
     #遍历五个景点，分别爬取
     for place in jingdian:
         driver.get(place)
-        # time.sleep(5)
         try:
             WebDriverWait(driver, 10).until(lambda x: x.find_elements_by_class_name("title"))
         except TimeoutException:
@@ -56,8 +55,9 @@ def get_place_top5_comments(location, driver, landmark_number=5, save_path=os.pa
         place_name = title.text.split('\n')
         dic = {}
         #总评论数
-        sum = driver.find_element_by_xpath('/html/body/div[2]/div[4]/div/div/div[1]/span/em')
-        dic['总评论数'] = sum.text
+        sum_comment = driver.find_element_by_xpath('/html/body/div[2]/div[4]/div'
+                                                   '/div/div[1]/span/em')
+        dic['总评论数'] = sum_comment.text
         #分别获得"有图"、"好评"、"中评"、"差评"的评论条数信息
         for i in range(2, 6):
             xlablepath = '/ html / body / div[2] / div[4] / div / div ' \
@@ -150,8 +150,9 @@ def get_place_top5_comments(location, driver, landmark_number=5, save_path=os.pa
                                                 times_array[0:75], comment_array), axis=1)
             data = pd.DataFrame(concatenate_array, columns=["用户名", "评论星级", "评论时间", "评论内容"])
             filepath = './docs/comments'+'/'+location+'/'+place_name[0]+'/'+elem+'.CSV'
-            print(filepath)
-            data.to_csv(filepath, encoding='utf_8_sig')
+            summary_filename = PureWindowsPath(filepath)
+            correct_path = Path(summary_filename)
+            data.to_csv(correct_path, encoding='utf_8_sig')
         json_str = json.dumps(dic, ensure_ascii=False)
         summary_filepath = save_path + '/' + location + '/' + \
                           place_name[0] + '/' + place_name[0] + '各类评论数统计' + '.json'
