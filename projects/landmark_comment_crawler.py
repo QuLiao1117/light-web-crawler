@@ -21,7 +21,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 
-def get_place_top5_comments(location, driver, landmark_number=5,save_path=os.path.abspath('.')):
+def get_place_top5_comments(location, driver, landmark_number=5, save_path=os.path.abspath('.')):
     '''
         给定地点名，查找该地点排名前5的景点，将景点的信息写入json文件
         Args:
@@ -170,4 +170,4 @@ if __name__ == "__main__":
     ROOT_DIR = os.path.dirname(os.path.abspath('.')) + '/docs/comments'  # 图片保存的根路径
     # 循环下载
     for loc in LOCATIONS:
-        get_place_top5_comments(loc, BROWSER_OBJ, GET_LANDMARK_NUM,  ROOT_DIR)   # 调用函数爬取
+        get_place_top5_comments(loc, BROWSER_OBJ, GET_LANDMARK_NUM, ROOT_DIR)   # 调用函数爬取
