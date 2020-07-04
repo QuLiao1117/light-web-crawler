@@ -227,6 +227,23 @@ browser_obj = webdriver."浏览器名称"("驱动程序路径")
 
 #### 数据获取API
 
+##### get_place_top5_landmark_info
+
+从马蜂窝网站抓取地区景点信息,存储到/docs/city_landmart_info/地区名.json文件中
+
+```
+import landmart_info_crawler
+get_place_top5_landmark_info(location="北京", landmark_number=5)
+```
+
+###### 参数
+
+location:搜索的地区名称
+
+landmark_number: 计划在选定的地区抓取的景点数量（默认为5）
+
+
+
 ##### location_landmark_pic_download
 
 从马蜂窝网站抓取地区景点图片
