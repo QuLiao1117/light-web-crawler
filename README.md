@@ -20,6 +20,7 @@
   - [环境配置](#环境配置)
   - [示例程序变量](#示例程序变量)
   - [运行示例程序](#运行示例程序)
+  - [本地查看网页](#本地查看网页)
 - [API](#API)
   - [数据获取](#数据获取API)
   - [数据处理](#数据处理API)
@@ -74,13 +75,13 @@ DDL：2020年7月3日
 
 ### 第三阶段：完善各项内容
 
-1. 网页上传到服务器
-2. 编写示例程序（基本完成）
+1. 网页上传到服务器（已完成）
+2. 编写示例程序（已完成）
 3. 制作总结视频
-4. 优化代码
-5. 规范文档
+4. 优化代码（已完成）
+5. 规范文档（已完成）
 
-6. 统一数据编码、接口、引用
+6. 统一数据编码、接口、引用（已完成）
 
 
 DDL：2020年7月5日
@@ -123,9 +124,9 @@ DDL：2020年7月5日
 #### 文档规范
 
 1. Python文件使用pylint检测代码规范。
-2. Python、HTML、JavaScript、CSS、json文件遵循Google风格。（待完成）
+2. Python、HTML、JavaScript、CSS、json文件遵循Google风格。
 
-3. CSV文件遵循IETF的RFC4180标准。（待完成）
+3. CSV文件遵循IETF的RFC4180标准。
 
 ## 使用指南
 
@@ -217,11 +218,26 @@ Pool(3)
 
 ```python
 def _pic_clawer():
-browser_obj = webdriver."浏览器名称"("驱动程序路径")
-...
+	browser_obj1 = webdriver."浏览器名称"("驱动程序路径")
+
+def _comment_clawer_analysis():
+  browser_obj2 = webdriver."浏览器名称"("驱动程序路径")
+
+def _info_clawer():
+	browser_obj1 = webdriver."浏览器名称"("驱动程序路径")
 ```
 
 直接示例运行程序，获取和处理的数据结果保存在`$FILE_PATH$/docs`文档目录中。
+
+#### 本地查看网页
+
+`/sources`与`/docs`文件夹在同一目录时，网页图片正常加载。
+
+打开`/sources/HomePage/index.html`正常查看网页。
+
+#### 在线查看网页
+
+浏览器地址栏中输入 http://47.97.208.253/web/ 访问
 
 ## API
 
@@ -229,20 +245,45 @@ browser_obj = webdriver."浏览器名称"("驱动程序路径")
 
 ##### get_place_top5_landmark_info
 
-从马蜂窝网站抓取地区景点信息,存储到/docs/city_landmart_info/地区名.json文件中
+从马蜂窝网站抓取地区景点信息
 
-```
+```python
 import landmart_info_crawler
-get_place_top5_landmark_info(location="北京", landmark_number=5)
+get_place_top5_landmark_info(driver, location, save_path, landmark_number=5)
 ```
 
 ###### 参数
 
-location:搜索的地区名称
+`driver` 一个Selenium浏览器对象
 
-landmark_number: 计划在选定的地区抓取的景点数量（默认为5）
+`location` (string) 搜索的地区名称
 
+`save_path` (string) 保存路径
 
+`landmark_number` (int) 计划在选定的地区抓取的景点数量（默认为5）
+
+------
+
+##### get_place_top5_comments
+
+从马蜂窝网站抓取地区景点信息
+
+```python
+import landmart_comment_crawler
+get_place_top5_comment(location, driver, landmark_number=5, save_path=os.path.abspath('.'))
+```
+
+###### 参数
+
+`location` (string) 搜索的地区名称
+
+`driver` 一个Selenium浏览器对象
+
+`landmark_number` (int) 计划在选定的地区抓取的景点数量（默认为5）
+
+`save_path` (string) 保存路径（默认为文件所在目录）
+
+------
 
 ##### location_landmark_pic_download
 
@@ -256,15 +297,15 @@ location_landmark_pic_download(browser, location_name="北京", landmark_number=
 
 ###### 参数
 
-browser: 一个Selenium浏览器对象
+`browser` 一个Selenium浏览器对象
 
-location_name: 搜索的地区名称（默认为"北京"）
+`location_name` (string) 搜索的地区名称（默认为"北京"）
 
-landmark_number: 计划在选定的地区抓取的景点数量（默认为5）
+`landmark_number` (int) 计划在选定的地区抓取的景点数量（默认为5）
 
-pic_number_per_landmark: 每个景点抓取的图片数（默认为9）
+`pic_number_per_landmark` (int) 每个景点抓取的图片数（默认为9）
 
-save_path: 保存路径（默认为文件所在目录）
+`save_path` (string) 保存路径（默认为文件所在目录）
 
 ###### 返回值
 
@@ -276,7 +317,7 @@ False表示该地区指定数量的部分图片未下载成功。
 
 ###### 事件
 
-TimeoutException: 由于网页元素加载太久（默认10s）而报错。
+`TimeoutException` (Exception) 由于网页元素加载太久（默认10s）而报错。
 
 ------
 
@@ -291,11 +332,11 @@ pic_link_save_as_png(pic_link, png_name, pic_path)
 
 ###### 参数
 
-pic_link: 一张图片链接
+`pic_link` (string) 一张图片链接
 
-png_name: 图片名称
+`png_name` (string) 图片名称
 
-pic_path: png图片保存路径
+`pic_path` (string) png图片保存路径
 
 ------
 
@@ -312,13 +353,13 @@ cal_words_freq(texts, stopwords)
 
 ###### 参数
 
-texts: 一组评论list
+`texts` (list) 一组评论
 
-stopwords: 停止词的list
+`stopwords` (list) 停用词
 
 ###### 返回值
 
-字典对象
+(dictionary) 字典对象
 
 key为词，value为频率
 
@@ -330,14 +371,14 @@ key为词，value为频率
 
 ```python
 import comments_analysis
-texts_analysis(comments_file_path, stopwords_file_path):
+texts_analysis(comments_file_path, stopwords_file_path)
 ```
 
 ###### 参数
 
-comments_file_path: 所有评论的文件夹路径
+`comments_file_path` (string) 所有评论的文件夹路径
 
-stopwords_file_path: 停用词文件路径
+`stopwords_file_path` (string) 停用词文件路径
 
 ###### 输出
 
@@ -347,18 +388,18 @@ stopwords_file_path: 停用词文件路径
 
 1. 数据获取API均无法正常运行Safari浏览器。
 2. 若`$FILE_PATH$/docs/*/*/*`目录中包含其他非数据获取阶段获取的文档，则会导致数据处理出错。
-3. 使用echarts实现各省份地图之后得到的网页不能通过浏览器直接打开本地HTML文件，会出现跨域问题（浏览器（Webkit内核）的安全策略决定了file协议访问的应用无法使用XMLHttpRequest对象）目前的解决方案是将文件放到服务器上进行访问，可以正常加载！
+3. 首页HTML使用ECHARTS实现各省份地图之后得到的网页不能通过浏览器直接打开本地HTML文件，会出现跨域问题（浏览器（Webkit内核）的安全策略决定了file协议访问的应用无法使用XMLHttpRequest对象）。目前的解决方案是将文件放到服务器上进行访问，可以正常加载！
 
 ## 文件目录
 
 ```
 ├── README.md                   // 项目说明书
 ├── requirements.txt            // 依赖的外部Python包列表
-├── test                        // 项目的测试文件夹
+├── test                        // 项目的demo文件
 ├── example_code.py             // 示例程序
 ├── project                     // 项目数据获取代码
-│   ├── landmarkInfo.py              // 基本信息爬虫
-│   ├── landmarkComment.py           // 评论爬虫
+│   ├── landmark_info_crawler.py     // 基本信息爬虫
+│   ├── landmark_comment_crawler.py  // 评论爬虫
 │   ├── landmark_pic_crawler.py      // 图片爬虫
 │   ├── commens_analysis.py          // 评论分析
 │   └── stopword                     // 停用词库
@@ -382,8 +423,8 @@ stopwords_file_path: 停用词文件路径
 ├── sources                          // 网页文件夹
 │   ├── HEAD.png                            // 项目Logo
 │   ├── HomePage                            // 首页HTML文件夹
-│   ├── scene-intro                         // 各景点HTML文件夹
-│   └──                                     // 
+│   ├── locations-page                      // 省份HTML文件夹
+│   └── scene-intro                         // 各景点HTML文件夹
 └── LICENSE
 ```
 
