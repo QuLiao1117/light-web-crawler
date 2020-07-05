@@ -30,44 +30,54 @@ def get_place_top5_landmark_info(driver, location, save_path, landmark_number=5)
     driver = webdriver.Chrome()
     driver.get("https://www.mafengwo.cn/mdd/")
     dic = {}
+    #对地区进行搜索
     driver.find_element_by_class_name('search-input').send_keys(location)
     driver.find_element_by_class_name('search-button').click()
+    #点击景点页
     driver.find_element_by_link_text('景点').click()
     link = driver.find_elements_by_class_name('_j_search_link')
     link = driver.find_elements_by_partial_link_text('景点 -')
     jingdian = []
+    #查找景点的跳转url，放入一个list中
     for i in link[:landmark_number]:
         jingdian.append(i.get_attribute('href'))
+    #遍历list
     for place in jingdian:
         driver.get(place)
+        #等待，避免出现加载未完成的情况
         try:
             WebDriverWait(driver, 10).until(lambda x: x.find_elements_by_class_name("title"))
         except TimeoutException:
             raise TimeoutException("页面图片加载超时")
+        #查找title
         title = driver.find_element_by_class_name('title')
         place_name = title.text.split('\n')
         dic[place_name[0]] = {}
+        #切分中英文名
         if len(place_name) > 1:
             dic[place_name[0]]["英文名"] = place_name[1]
+        #找到地址
         address = driver.find_element_by_class_name('sub').text  # 地址
         dic[place_name[0]]["地址"] = address
+        #找到电话等信息
         content = driver.find_elements_by_class_name('content')
         label = driver.find_elements_by_class_name('label')
         for i in range(len(label)):
             dic[place_name[0]][label[i].text] = content[i + 1].text
         dd_content = driver.find_elements_by_tag_name('dd')
-
+        #找到交通等信息
         dic[place_name[0]]["交通"] = dd_content[0].text
         dic[place_name[0]]["门票"] = dd_content[1].text
         dic[place_name[0]]["开放时间"] = dd_content[2].text
     driver.close()
+    #使用utf8将景点信息存进json文件(先将字典转换格式，再写入文件)
     json_str = json.dumps(dic, ensure_ascii=False)
     data_folder = Path(save_path)
     location_path = data_folder / (location + ".json")
     with open(location_path, 'w', encoding='utf-8') as json_file:
         json_file.write(json_str)
 
-
+#测试代码
 if __name__ == "__main__":
     """ LOCATIONS = ['河北', '山西', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建',
                  '江西', '山东', '河南', '湖北', '湖南', '广东', '海南', '四川', '贵州',
@@ -76,7 +86,9 @@ if __name__ == "__main__":
     LOCATIONS = ['河北']
     ROOT_DIR = os.path.abspath(os.path.join(os.getcwd(), ".")) + '/docs/city_landmark_info'
     print(ROOT_DIR)
+    #浏览器对象
     BROWSER_OBJ = webdriver.Chrome()
+    #景点数目
     GET_LANDMARK_NUM =  5
     for loc in LOCATIONS:
         get_place_top5_landmark_info(BROWSER_OBJ, loc, ROOT_DIR, landmark_number=GET_LANDMARK_NUM)

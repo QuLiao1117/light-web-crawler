@@ -346,7 +346,7 @@ button {
 
 .header_main {
     width: 100%;
-    background-image: url(../../../../../docs/pic/安徽/宏村/5.png);#../images/header-bg.png
+    background-image: url(../../../../../docs/pic/安徽/宏村/5.png);/* ../images/header-bg.png */
     background-size: 100%;
     padding: 10px 0px 0px 0px;
 }
@@ -560,7 +560,7 @@ button {
 .blog_section {
     width: 100%;
     float: left;
-    background-image: url(../images/blog-bg.png);
+    background-image: url(../../../../../docs/pic/安徽/宏村/5.png);
     height: auto;
     background-repeat: no-repeat;
     background-size: 100%;
