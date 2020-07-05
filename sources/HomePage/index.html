@@ -94,23 +94,12 @@
 						   <form action="#" method="post">
 								<div class="col-md-3 form-time-w3layouts editContent">
 										<label class="editContent"><span class="fa fa-user" aria-hidden="true"></span> 个性化定制 </label>
-										<!--<input type="text" placeholder="Name" required="">-->
 								</div>
 								<div class="col-md-3 form-date-w3-agileits editContent">
 										<label class="editContent"><span class="fa fa-map-marker" aria-hidden="true"></span> 精选top5景点 </label>
-										<!--<select class="form-control">-->
-											<!--<option>London</option>-->
-											<!--<option>Paris</option>-->
-											<!--<option>India</option>-->
-											<!--<option>Japan</option>-->
-											<!--<option>America</option>-->
-										<!--</select>-->
 								</div>
 								<div class="col-md-3 form-left-agileits-w3layouts editContent">
 										<label class="editContent"><span class="fa fa-bus" aria-hidden="true"></span> 路线信息俱全</label>
-									<!--<div class="agileits_w3layouts_main_gridl">-->
-										<!--<input class="date has Datepicker" id="datepicker" name="Text" type="text" value="Start Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '21/11/2017';}" required="">-->
-									<!--</div>-->
 								</div>
 								<div class="col-md-3 form-left-agileits-w3layouts editContent">
 										<label class="editContent"><span class="fa fa-bus" aria-hidden="true"></span> 最直观的网友评论展示 </label>
@@ -124,11 +113,11 @@
 		<!-- //banner-info-->
 		<div class="slides-box">
 			<ul class="slides">
-				<li style="background: url(images/s1.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s22.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s33.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s44.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s55.jpg) no-repeat;background-size:cover;"></li>
+				<li style="background: url(images/SlidePic1.jpg) no-repeat;background-size:cover;"></li>
+				<li style="background: url(images/SlidePic2.jpg) no-repeat;background-size:cover;"></li>
+				<li style="background: url(images/SlidePic3.jpg) no-repeat;background-size:cover;"></li>
+				<li style="background: url(images/SlidePic4.jpg) no-repeat;background-size:cover;"></li>
+				<li style="background: url(images/SlidePic5.jpg) no-repeat;background-size:cover;"></li>
 			</ul>
 		</div>
 		<!-- //banner  -->
@@ -146,7 +135,7 @@
 				<h4>欢迎来到绝不熬夜!</h4>
 				<h5>travel tourist</h5>
 				<p>精心爬取马蜂窝网站全国省份的top5景点，智能分析网友评论，词云展示，多维度展示景点位置开放时间等信息，精选美图，免去您一点点做攻略的苦恼，给您最畅快优雅的体验，人未到景点却仿佛早已置身其中，真正实现说走就走，您的私人旅行定制专家。还等什么，快来体验吧↓</p>
-				<a href="#" class="button button--nina" data-text="learn mmore" data-toggle="modal" data-target="#myModal">Pick Me</a>
+				<a href="#packages" class="button button--nina" data-text="learn mmore" data-toggle="modal" data-target="#myModal">Pick Me</a>
 			</div>
 			<div class="col-md-4 middle-img">
 				<img src="images/middle.png" alt="about image" />
@@ -164,8 +153,7 @@
 						<!-- Modal content-->
 							<div class="modal-content">
 								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button> 
-									<!-- <iframe src="https://player.vimeo.com/video/88224399"></iframe>	-->
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<iframe src="#"></iframe>
 								</div>
 							</div>
@@ -225,8 +213,7 @@
 				<div class="row paddtop" style='background-image: url("images/Mapbackground.jpg")'>
 
 					<div class="col-md-4 package1">
-						<!--<div style='background-image: url("images/故宫1.jpg");width: 600px;height: 600px;'>-->
-							<div id="box1" style="width: 600px;height: 600px;margin-left: 0px"></div>
+							<div id="box1" style="width: 500px;height: 500px;margin-left: 0px"></div>
 							<script>
 								$(function () {
 									var myChart = echarts.init(document.getElementById('box1'));
@@ -279,13 +266,12 @@
                                                 },
 												blurSize: 30,
 												data: [
-													{name: '天安门广场', value: 500},
-													{name: '八达岭长城', value: 500},
-													{name: '颐和园', value: 0},
-													{name: '天坛公园', value: 0},
-													{name: '故宫', value: 0},
-													{name: '朝阳区', value: 0},
-													{name: ' ', value: 0},
+													{name: '天安门广场', value: 500,url:'sources\\scene-intro\\beijing\\tiananmenguangchang\\tiananmenguangchang.html'},
+													{name: '八达岭长城', value: 500,url:'sources\\scene-intro\\beijing\\badalingchangcheng\\badalingchangcheng.html'},
+													{name: '颐和园', value: 0,url:'sources\\scene-intro\\beijing\\yiheyuan\\yiheyuan.html'},
+													{name: '天坛公园', value: 0,url:'sources\\scene-intro\\beijing\\tiantangongyuan\\tiantangongyuan.html'},
+													{name: '故宫', value: 0,url:'sources\\scene-intro\\beijing\\gugong\\gugong.html'},
+													{name: ' ', value: 0,url:'sources\\locations-page\\beijing.html'},
 												],
 												//自定义名称映射
 												nameMap: {
@@ -317,17 +303,16 @@
 							</script>
 						<!--</div>-->
 							<p><span style = 'font-size:16px;color: #c7ddef'>北京top5景点：</span><br><br>
-								<a href="https://www.baidu.com/" class="button button--nina">故宫</a>
-								<a href="https://www.baidu.com/" class="button button--nina" >八达岭长城</a>
-								<a href="https://www.baidu.com/" class="button button--nina" >天安门广场</a><br><br>
-								<a href="https://www.baidu.com/" class="button button--nina">天坛公园</a>
-								<a href="https://www.baidu.com/" class="button button--nina">颐和园</a>
+								<a href="sources/scene-intro/beijing/gugong/gugong.html" class="button button--nina">故宫</a>
+								<a href="sources/scene-intro/beijing/badalingchangcheng/badalingchangcheng.html" class="button button--nina" >八达岭长城</a><br><br>
+								<a href="sources/scene-intro/beijing/tiananmenguangchang/tiananmenguangchang.html" class="button button--nina" >天安门广场</a><br><br>
+								<a href="sources/scene-intro/beijing/tiantangongyuan/tiantangongyuan.html" class="button button--nina">天坛公园</a>
+								<a href="sources/scene-intro/beijing/yiheyuan/yiheyuan.html" class="button button--nina">颐和园</a>
 							</p>
 					</div>
 
 					<div class="col-md-4 package1">
-						<!--<div style='background-image: url("images/故宫1.jpg")'>-->
-							<div id="box2" style="width: 600px;height: 600px;"></div>
+							<div id="box2" style="width: 500px;height: 500px;"></div>
 							<script>
 									$(function () {
 										var myChart = echarts.init(document.getElementById('box2'));
@@ -380,15 +365,16 @@
                                                     },
 													blurSize: 30,
 													data: [
-														{name: '陕西历史博物馆', value: 500},
-														{name: '秦始皇兵马俑博物馆', value: 0},
-														{name: '华山', value: 0},
-														{name: '华清宫', value: 0},
-														{name: ' ', value: 0},
+														{name: '陕西历史博物馆', value: 500,url:'sources\\scene-intro\\shanxi\\shanxilishibowuguan\\shanxilishibowuguan.html'},
+														{name: '秦始皇兵马俑博物馆', value: 0,url:'sources\\scene-intro\\shanxi\\qinshihuangbingmayongbowuguan\\qinshihuangbingmayongbowuguan.html'},
+														{name: '华山', value: 0,url:'sources\\scene-intro\\shanxi\\huashan\\huashan.html'},
+														{name: '华清宫', value: 0,url:'sources\\scene-intro\\shanxi\\huaqinggong\\huaqinggong.html'},
+                                                        {name: '西安城墙', value: 0,url:'sources\\scene-intro\\shanxi\\xianchengqiang\\xianchengqiang.html'},
+														{name: ' ', value: 0,url:'sources\\locations-page\\shanxi.html'},
 													],
 													//自定义名称映射
 													nameMap: {
-														'咸阳市':' ',
+														'咸阳市':'西安城墙',
 														'西安市':'陕西历史博物馆',
 														'渭南市':'秦始皇兵马俑博物馆',
 														'商洛市':'华山',
@@ -411,17 +397,16 @@
 								</script>
 						<!--</div>-->
 							<p><span style = 'font-size:16px;color: #c7ddef'>陕西top5景点：</span><br><br>
-								<a href="https://www.baidu.com/" class="button button--nina">西安城墙</a>
-								<a href="https://www.baidu.com/" class="button button--nina" >陕西历史博物馆</a>
-								<a href="https://www.baidu.com/" class="button button--nina" >秦始皇兵马俑博物馆</a><br><br>
-								<a href="https://www.baidu.com/" class="button button--nina">华山</a>
-								<a href="https://www.baidu.com/" class="button button--nina">华清宫</a>
+								<a href="sources\scene-intro\shanxi\xianchengqiang\xianchengqiang.html" class="button button--nina">西安城墙</a>
+								<a href="sources\scene-intro\shanxi\shanxilishibowuguan\shanxilishibowuguan.html" class="button button--nina" >陕西历史博物馆</a><br><br>
+								<a href="sources\scene-intro\shanxi\qinshihuangbingmayongbowuguan\qinshihuangbingmayongbowuguan.html" class="button button--nina" >秦始皇兵马俑博物馆</a><br><br>
+								<a href="sources\scene-intro\shanxi\huashan\huashan.html" class="button button--nina">华山</a>
+								<a href="sources\scene-intro\shanxi\huaqinggong\huaqinggong.html" class="button button--nina">华清宫</a>
 							</p>
 					</div>
 
 					<div class="col-md-4 package1">
-						<!--<div style='background-image: url("images/故宫1.jpg")'>-->
-							<div id="box3" style="width: 600px;height: 600px;"></div>
+							<div id="box3" style="width: 490px;height: 490px;"></div>
 							<script>
 								$(function () {
 									var myChart = echarts.init(document.getElementById('box3'));
@@ -474,8 +459,8 @@
                                                 },
 												blurSize: 30,
 												data: [
-													{name: '西海大峡谷 西递 徽州古城 黄山风景区 宏村', value: 500},
-													{name: ' ', value: 0},
+													{name: '西海大峡谷 西递 徽州古城 黄山风景区 宏村', value: 500,url:'sources\\locations-page\\anhui.html'},
+													{name: ' ', value: 0,url:'sources\\locations-page\\anhui.html'},
 												],
 												//自定义名称映射
 												nameMap: {
@@ -508,13 +493,12 @@
 							</script>
 						<!--</div>-->
 							<p><span style = 'font-size:16px;color: #c7ddef'>安徽top5景点：</span><br><br>
-								<a href="https://www.baidu.com/" class="button button--nina">西海大峡谷</a>
-								<a href="https://www.baidu.com/" class="button button--nina" >西递</a>
-								<a href="https://www.baidu.com/" class="button button--nina" >徽州古城</a><br><br>
-								<a href="https://www.baidu.com/" class="button button--nina">黄山风景区</a>
-								<a href="https://www.baidu.com/" class="button button--nina">宏村</a>
+								<a href="sources\scene-intro\anhui\xihaidaxiagu\xihaidaxiagu.html" class="button button--nina">西海大峡谷</a>
+								<a href="sources\scene-intro\anhui\xidi\xidi.html" class="button button--nina" >西递</a><br><br>
+								<a href="sources\scene-intro\anhui\huizhougucheng\huizhougucheng.html" class="button button--nina" >徽州古城</a><br><br>
+								<a href="sources\scene-intro\anhui\huangshanfengjingqu\huangshanfengjingqu.html" class="button button--nina">黄山风景区</a>
+								<a href="sources\scene-intro\anhui\hongcun\hongcun.html" class="button button--nina">宏村</a>
 							</p>
-						<!--<img src="images/package3.jpg" alt="package1" />-->
 					</div>
 				<div>
 				<!--<div class="clearfix"></div>-->
@@ -523,7 +507,7 @@
 	</div>
 </div>
 <!-- //popular packages -->
-<!--<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >自助建站</a></div>-->
+
 <!-- agile_testimonials -->
 	<div class="agile_testimonials" id="testimonials">
 		<div class="container">
@@ -541,13 +525,11 @@
 										<img src="images/头像1.PNG" alt="" class="img-r">
 									</div>
 									<div class="test-grid2_text">
-										<h4>林邦浩</h4>
+										<h4>林邦皓</h4>
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<p class="para-w3-agile">Lorem ipsum dolor sit amet, consectetur adipiscing elit,consectetur adipiscing elit, sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua sed do eiusmod tempor incididunt ut labore etdolore magna aliqua. Ut enim ad minim
-									veniam, quis. Lorem ipsum dolor .</p>
+								<p class="para-w3-agile"><br>负责项目统筹规划，以及推进项目。同时编写了图片爬虫代码，并对评论内容进行情感分析，制作词云图</p>
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
 							</div>
 						</div>
@@ -562,9 +544,7 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<p class="para-w3-agile">Lorem ipsum dolor sit amet, consectetur adipiscing elit,consectetur adipiscing elit, sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua sed do eiusmod tempor incididunt ut labore etdolore magna aliqua. Ut enim ad minim
-									veniam, quis. Lorem ipsum dolor .</p>
+								<p class="para-w3-agile">进行了项目目录结构的规划设计，使用git进行项目管理，制定了json的存储方式，使用selenium自动化测试框架进行了全国所有省份top5景点详细信息的爬取。使用bootstrap框架进行了15个景点网页的开发，使用echarts等脚本美化网页效果，并将网页部署到阿里云服务器中。</p>
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
 							</div>
 						</div>
@@ -579,9 +559,29 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<p class="para-w3-agile">Lorem ipsum dolor sit amet, consectetur adipiscing elit,consectetur adipiscing elit, sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua sed do eiusmod tempor incididunt ut labore etdolore magna aliqua. Ut enim ad minim
-									veniam, quis. Lorem ipsum dolor .</p>
+								<p class="para-w3-agile">
+									<br>
+									使用selenium自动化测试框架进行了三个省份top5景点网友评论信息的爬取。使用bootstrap框架进行了网页首页的开发，使用echarts等脚本实现地图，美化网页效果。
+								</p>
+								<i class="fa fa-quote-left" aria-hidden="true"></i>
+							</div>
+						</div>
+						<div class="agile">
+							<div class="test-grid">
+								<div class="test-grid1">
+									<div class="test-grid2">
+										<img src="images/头像4.PNG" alt="" class="img-r">
+									</div>
+									<div class="test-grid2_text">
+										<h4>周芳宇</h4>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<p class="para-w3-agile">
+									<br>
+									三个省份页的开发，使用脚本美化网页效果。
+									<br>
+								</p>
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
 							</div>
 						</div>
@@ -638,41 +638,41 @@
 				<div id="main"></div>
 					<script type="text/javascript">
                     var dataList=[
-                        {name:"南海诸岛",value:0,url:'http://www.baidu.com'},
-                        {name: '北京', value:1000,url:'http://www.baidu.com'},
-                        {name: '天津', value: 0},
-                        {name: '上海', value: 0},
-                        {name: '重庆', value: 0},
-                        {name: '河北', value: 0},
-                        {name: '河南', value: 0},
-                        {name: '云南', value: 0},
-                        {name: '辽宁', value: 0},
-                        {name: '黑龙江', value: 0},
-                        {name: '湖南', value: 0},
-                        {name: '安徽', value: 1000},
-                        {name: '山东', value: 0},
-                        {name: '新疆', value: 0},
-                        {name: '江苏', value: 0},
-                        {name: '浙江', value: 0},
-                        {name: '江西', value: 0},
-                        {name: '湖北', value: 0},
-                        {name: '广西', value: 0},
-                        {name: '甘肃', value: 0},
-                        {name: '山西', value: 0},
-                        {name: '内蒙古', value: 0},
-                        {name: '陕西', value: 1000},
-                        {name: '吉林', value: 0},
-                        {name: '福建', value: 0},
-                        {name: '贵州', value: 0},
-                        {name: '广东', value: 0},
-                        {name: '青海', value: 0},
-                        {name: '西藏', value: 0},
-                        {name: '四川', value: 0},
-                        {name: '宁夏', value: 0},
-                        {name: '海南', value: 0},
-                        {name: '台湾', value: 0},
-                        {name: '香港', value: 0},
-                        {name: '澳门', value: 0}
+                        {name:"南海诸岛",value:0,url:"#home"},
+                        {name: '北京', value:1000,url:'sources\\locations-page\\beijing.html'},
+                        {name: '天津', value: 0,url:"#home"},
+                        {name: '上海', value: 0,url:"#home"},
+                        {name: '重庆', value: 0,url:"#home"},
+                        {name: '河北', value: 0,url:"#home"},
+                        {name: '河南', value: 0,url:"#home"},
+                        {name: '云南', value: 0,url:"#home"},
+                        {name: '辽宁', value: 0,url:"#home"},
+                        {name: '黑龙江', value: 0,url:"#home"},
+                        {name: '湖南', value: 0,url:"#home"},
+                        {name: '安徽', value: 1000,url:'sources\\locations-page\\anhui.html'},
+                        {name: '山东', value: 0,url:"#home"},
+                        {name: '新疆', value: 0,url:"#home"},
+                        {name: '江苏', value: 0,url:"#home"},
+                        {name: '浙江', value: 0,url:"#home"},
+                        {name: '江西', value: 0,url:"#home"},
+                        {name: '湖北', value: 0,url:"#home"},
+                        {name: '广西', value: 0,url:"#home"},
+                        {name: '甘肃', value: 0,url:"#home"},
+                        {name: '山西', value: 0,url:"#home"},
+                        {name: '内蒙古', value: 0,url:"#home"},
+                        {name: '陕西', value: 1000,url:'sources\\locations-page\\shanxi.html'},
+                        {name: '吉林', value: 0,url:"#home"},
+                        {name: '福建', value: 0,url:"#home"},
+                        {name: '贵州', value: 0,url:"#home"},
+                        {name: '广东', value: 0,url:"#home"},
+                        {name: '青海', value: 0,url:"#home"},
+                        {name: '西藏', value: 0,url:"#home"},
+                        {name: '四川', value: 0,url:"#home"},
+                        {name: '宁夏', value: 0,url:"#home"},
+                        {name: '海南', value: 0,url:"#home"},
+                        {name: '台湾', value: 0,url:"#home"},
+                        {name: '香港', value: 0,url:"#home"},
+                        {name: '澳门', value: 0,url:"#home"}
                     ]
                     var myChart = echarts.init(document.getElementById('main'));
                     option = {
@@ -686,7 +686,7 @@
                             left: 'left',
                             top: 'bottom',
                             inRange: {
-                                color: ['#97A5E0', '#7084D4']//取值范围的颜色
+                                color: ['#97A5E0', '#2430d4']//取值范围的颜色
                             },
                             show:false
                             //true//图注
@@ -762,11 +762,10 @@
 				<div class="col-md-3 col-xs-3 footer-grid">
 					<h3>Contact Info</h3>
 					<ul>
-						<!--<li><i class="fa fa-phone"></i>+012 345 6789</li>-->
-						<!--<li><i class="fa fa-fax"></i>+987 654 3210</li>-->
 						<li><i class="fa fa-map-marker"></i>北京市海淀区中国农业大学</li>
 						<li><i class="fa fa-envelope-o"></i><a href="mailto:163@mail.com">lihaixialhx@163.com</a></li>
-						<li><i class="fa fa-envelope-o"></i><a href="mailto:example@mail.com">mail1@example1.com</a></li>
+						<li><i class="fa fa-envelope-o"></i><a href="mailto:example@mail.com">lbanghao@cau.edu.cn</a></li>
+						<li><i class="fa fa-envelope-o"></i><a href="mailto:example@mail.com">quliao1117@gmail.com</a></li>
 					</ul>
 				</div>
 				<div class="col-md-2 col-xs-3 footer-grid w3social">
@@ -776,11 +775,10 @@
 						<li><a href="#about" class="scroll">关于我们</a></li>
 						<li><a href="#packages" class="scroll">精选景点</a></li>
 						<li><a href="#testimonials" class="scroll">成员信息</a></li>
-						<li><a href="#contact" class="scroll">联系我们</a></li>
 					</ul>
 				</div>
 				<div class="col-md-4 col-xs-3 footer-grid">
-					<h3>Latest Tweets</h3>
+					<h3>Latest info</h3>
 					<ul class="tweet-agile">
 					<li>
 						<br><br><!--<i class="fa fa-twitter-square" aria-hidden="true"></i>-->
@@ -810,81 +808,81 @@
 </div>
 <!-- //footer end here -->
 
- <!--popup signup form-->
-	<div class="wthree_pop_up">
-		<div id="small-dialog" class="mfp-hide agile_signup_form">
-			<h2>BOOK OUR TRAVEL TOURIST</h2>
-			<form action="#" method="post">
+ <!--&lt;!&ndash;popup signup form&ndash;&gt;-->
+	<!--<div class="wthree_pop_up">-->
+		<!--<div id="small-dialog" class="mfp-hide agile_signup_form">-->
+			<!--<h2>BOOK OUR TRAVEL TOURIST</h2>-->
+			<!--<form action="#" method="post">-->
 
-				<div class="form-control">
-					<label class="header1">Traveller Name <span>:</span></label>
-					<input type="text" id="firstname" name="firstname" placeholder="Full Name" title="Please enter your Full Name" required="">
-				</div>
+				<!--<div class="form-control">-->
+					<!--<label class="header1">Traveller Name <span>:</span></label>-->
+					<!--<input type="text" id="firstname" name="firstname" placeholder="Full Name" title="Please enter your Full Name" required="">-->
+				<!--</div>-->
 
-				<div class="form-control">
-					<label class="editContent">Travel Location <span>:</span></label>
-						<select class="form-control">
-							<option>London</option>
-							<option>Paris</option>
-							<option>India</option>
-							<option>Japan</option>
-							<option>America</option>
-						</select>
-				</div>
+				<!--<div class="form-control">-->
+					<!--<label class="editContent">Travel Location <span>:</span></label>-->
+						<!--<select class="form-control">-->
+							<!--<option>London</option>-->
+							<!--<option>Paris</option>-->
+							<!--<option>India</option>-->
+							<!--<option>Japan</option>-->
+							<!--<option>America</option>-->
+						<!--</select>-->
+				<!--</div>-->
 
-				<div class="form-control">
-					<label class="header1">Email Address <span>:</span></label>
-					<input type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="">
-				</div>
+				<!--<div class="form-control">-->
+					<!--<label class="header1">Email Address <span>:</span></label>-->
+					<!--<input type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="">-->
+				<!--</div>-->
 
-				<div class="form-control">
-					<label class="header1">Phone Number <span>:</span></label>
-					<input type="tel" id="tel" name="tel" placeholder="Phone number" title="Please enter a valid Phone number" required="">
-				</div>
+				<!--<div class="form-control">-->
+					<!--<label class="header1">Phone Number <span>:</span></label>-->
+					<!--<input type="tel" id="tel" name="tel" placeholder="Phone number" title="Please enter a valid Phone number" required="">-->
+				<!--</div>-->
 
-				<div class="form-control">
-					<label class="editContent">Journey start date <span>:</span></label>
-					<input class="date has Datepicker" id="datepicker" name="Text" type="text" value="Start Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '21/11/2017';}" required="">
-				</div>
+				<!--<div class="form-control">-->
+					<!--<label class="editContent">Journey start date <span>:</span></label>-->
+					<!--<input class="date has Datepicker" id="datepicker" name="Text" type="text" value="Start Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '21/11/2017';}" required="">-->
+				<!--</div>-->
 
-				<div class="form-control">
-					<label class="editContent">Journey return date <span>:</span></label>
-					<input class="date has Datepicker" id="datepicker" name="Text" type="text" value="Return Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '21/11/2017';}" required="">
-				</div>
+				<!--<div class="form-control">-->
+					<!--<label class="editContent">Journey return date <span>:</span></label>-->
+					<!--<input class="date has Datepicker" id="datepicker" name="Text" type="text" value="Return Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '21/11/2017';}" required="">-->
+				<!--</div>-->
 
-				<div class="form-control">
-					<label class="editContent">No: of travellers <span>:</span></label>
-						<select class="form-control">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5 or more</option>
-						</select>
-				</div>
-				<div class="w3_submit">
-					<input type="submit" class="register" value="Submit">
-				</div>
+				<!--<div class="form-control">-->
+					<!--<label class="editContent">No: of travellers <span>:</span></label>-->
+						<!--<select class="form-control">-->
+							<!--<option>1</option>-->
+							<!--<option>2</option>-->
+							<!--<option>3</option>-->
+							<!--<option>4</option>-->
+							<!--<option>5 or more</option>-->
+						<!--</select>-->
+				<!--</div>-->
+				<!--<div class="w3_submit">-->
+					<!--<input type="submit" class="register" value="Submit">-->
+				<!--</div>-->
 
-			</form>
-		</div>
-	</div>
-	<script type="text/javascript">
-		window.onload = function () {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
-		}
-		function validatePassword(){
-			var pass2=document.getElementById("password2").value;
-			var pass1=document.getElementById("password1").value;
-			if(pass1!=pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-			else
-				document.getElementById("password2").setCustomValidity('');
-				//empty string means no validation error
-		}
-	</script>
-<!-- //popup signup form -->
+			<!--</form>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<script type="text/javascript">-->
+		<!--window.onload = function () {-->
+			<!--document.getElementById("password1").onchange = validatePassword;-->
+			<!--document.getElementById("password2").onchange = validatePassword;-->
+		<!--}-->
+		<!--function validatePassword(){-->
+			<!--var pass2=document.getElementById("password2").value;-->
+			<!--var pass1=document.getElementById("password1").value;-->
+			<!--if(pass1!=pass2)-->
+				<!--document.getElementById("password2").setCustomValidity("Passwords Don't Match");-->
+			<!--else-->
+				<!--document.getElementById("password2").setCustomValidity('');-->
+				<!--//empty string means no validation error-->
+		<!--}-->
+	<!--</script>-->
+<!--&lt;!&ndash; //popup signup form &ndash;&gt;-->
 
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
@@ -996,6 +994,18 @@
 <!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
  <!--//for bootstrap working-->
-
+ <p>
+	<center>
+	<br>&copy; 绝不熬夜 | Last updated: 07/05/2020
+	</center>
+</p>
+<p><center>Powered By Bootstrap</center></p>
+<p><center>Visitors(From:07/03/2020):</center></p>
+<center>
+<!-- hitwebcounter Code START -->
+<a href="https://www.hitwebcounter.com" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=7537983&style=0024&nbdigits=5&type=page&initCount=0" title="Web Counter" Alt="counter free"   border="0" >
+</a>              
+</center>
 </body>
 </html>
