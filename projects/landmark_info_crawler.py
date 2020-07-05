@@ -11,14 +11,15 @@ Args:
 
 import json
 import os
+from pathlib import Path
+
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
-from pathlib import Path
 
 
 def get_place_top5_landmark_info(driver, location, save_path, landmark_number=5):
-    '''
+    """
     给定地点名，查找该地点排名前5的景点，将景点的信息写入json文件
 
     Args:
@@ -26,8 +27,8 @@ def get_place_top5_landmark_info(driver, location, save_path, landmark_number=5)
         location:地点名
         landmark_number:需要获取的top景点数目
         save_path: 保存路径
-    '''
-    driver = webdriver.Chrome()
+    """
+
     driver.get("https://www.mafengwo.cn/mdd/")
     dic = {}
     #对地区进行搜索
@@ -69,12 +70,12 @@ def get_place_top5_landmark_info(driver, location, save_path, landmark_number=5)
         dic[place_name[0]]["交通"] = dd_content[0].text
         dic[place_name[0]]["门票"] = dd_content[1].text
         dic[place_name[0]]["开放时间"] = dd_content[2].text
-    driver.close()
-    #使用utf8将景点信息存进json文件(先将字典转换格式，再写入文件)
     json_str = json.dumps(dic, ensure_ascii=False)
-    data_folder = Path(save_path)
+    data_folder = Path(save_path + '/')
+    if not os.path.exists(data_folder):
+        os.makedirs(data_folder)
     location_path = data_folder / (location + ".json")
-    with open(location_path, 'w', encoding='utf-8') as json_file:
+    with open(location_path, 'w+', encoding='utf-8') as json_file:
         json_file.write(json_str)
 
 #测试代码
@@ -84,11 +85,11 @@ if __name__ == "__main__":
                  '云南', '陕西', '甘肃', '青海', '台湾', '西藏', '广西', '内蒙古', '宁夏',
                  '新疆', '北京', '上海', '天津', '重庆', '香港', '澳门'] """
     LOCATIONS = ['河北']
-    ROOT_DIR = os.path.abspath(os.path.join(os.getcwd(), ".")) + '/docs/city_landmark_info'
+    ROOT_DIR = os.path.dirname(os.path.abspath(os.path.join(os.getcwd(), "."))) + '/docs/city_landmark_info'
     print(ROOT_DIR)
     #浏览器对象
     BROWSER_OBJ = webdriver.Chrome()
-    #景点数目
-    GET_LANDMARK_NUM =  5
+    GET_LANDMARK_NUM = 5
     for loc in LOCATIONS:
         get_place_top5_landmark_info(BROWSER_OBJ, loc, ROOT_DIR, landmark_number=GET_LANDMARK_NUM)
+    BROWSER_OBJ.close()

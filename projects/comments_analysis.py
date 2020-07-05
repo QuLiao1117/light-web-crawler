@@ -16,6 +16,7 @@ Args:
 import json
 import os
 import re
+from pathlib import Path
 
 import jieba
 import jieba.analyse
@@ -46,7 +47,7 @@ def _get_stopwords_list(file_path):
     # Return：
     #   一个list对象，其中包含每一个停止词
 
-    stopwords = [line.strip() for line in open(file_path, encoding='UTF-8').readlines()]
+    stopwords = [line.strip() for line in open(Path(file_path), encoding='UTF-8').readlines()]
     stopwords.extend(['', ' ', '~', '…'])
     stopwords = tuple(stopwords)
     return stopwords
@@ -161,32 +162,32 @@ def texts_analysis(comments_file_path, stopwords_file_path):
     for location in locations:
         # 构造文件路径
         print(location)
-        location_file_path = comments_file_path + '/' + location
+        location_file_path = Path(comments_file_path + '/' + location)
         landmarks = os.listdir(location_file_path)
         for landmark in landmarks:
-            landmark_file_path = location_file_path + '/' + landmark
+            landmark_file_path = location_file_path / landmark
             # 读取json文件
-            json_file_path = landmark_file_path + '/' + landmark + '各类评论数统计.json'
-            with open(json_file_path, 'r', encoding='gbk') as json_file:
+            json_file_path = landmark_file_path / (landmark + '各类评论数统计.json')
+            with open(json_file_path, 'r', encoding='utf-8') as json_file:
                 count_summary = json.load(json_file)
             # 评论内容读取
             comments = []
             try:
-                good_comments = pd.read_csv(landmark_file_path + '/好评.CSV', index_col=0)
+                good_comments = pd.read_csv(landmark_file_path / '好评.CSV', index_col=0)
                 good_comments = good_comments["评论内容"]
                 comments.extend(good_comments)
             except FileNotFoundError as file_no_find_msg:
                 print(file_no_find_msg)
                 good_comments = []
             try:
-                normal_comments = pd.read_csv(landmark_file_path + '/中评.CSV', index_col=0)
+                normal_comments = pd.read_csv(landmark_file_path / '中评.CSV', index_col=0)
                 normal_comments = normal_comments["评论内容"]
                 comments.extend(normal_comments)
             except FileNotFoundError as file_no_find_msg:
                 print(file_no_find_msg)
                 normal_comments = []
             try:
-                bad_comments = pd.read_csv(landmark_file_path + '/差评.CSV', index_col=0)
+                bad_comments = pd.read_csv(landmark_file_path / '差评.CSV', index_col=0)
                 bad_comments = bad_comments["评论内容"]
                 comments.extend(bad_comments)
             except FileNotFoundError as file_no_find_msg:
@@ -202,7 +203,7 @@ def texts_analysis(comments_file_path, stopwords_file_path):
             json_data.update({"words_freq": landmark_words_freq})
             json_out = {"apiVersion": "1.0", "data": json_data}
             with open(landmark_file_path
-                      + '/' + "comments analysis.json", "w", encoding='utf-8') as json_file:
+                      / "comments analysis.json", "w", encoding='utf-8') as json_file:
                 json_file.write(json.dumps(json_out, indent=4, ensure_ascii=False))
             # 输出词云
             landmark_wordcloud = wordcloud.WordCloud(scale=4, font_path="./SimHei.ttf",
@@ -211,7 +212,7 @@ def texts_analysis(comments_file_path, stopwords_file_path):
                                                      width=300, height=300
                                                      ).generate_from_frequencies(
                                                          landmark_words_freq)
-            landmark_wordcloud.to_file(landmark_file_path + '/' + "comments wordcloud.png")
+            landmark_wordcloud.to_file(landmark_file_path / "comments wordcloud.png")
             print(' ' + landmark + " 分析完成")
 
 

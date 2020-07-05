@@ -21,6 +21,7 @@ Print:
 
 import os
 import re
+from pathlib import Path
 
 import requests
 from selenium import webdriver
@@ -46,7 +47,7 @@ def pic_link_save_as_png(pic_link, png_name, pic_path):
     if not os.path.exists(pic_path):
         os.makedirs(pic_path)
     pic_binary_data = requests.get(pic_link)
-    png_path = pic_path + '/' + str(png_name) + ".png"
+    png_path = Path(pic_path) / (str(png_name) + ".png")
     # 保存图片
     with open(png_path, "wb") as png_file:
         for chunk in pic_binary_data:
@@ -132,7 +133,7 @@ def location_landmark_pic_download(
         landmark_name = landmark_title[0].replace("（已关/暂停营业）", "")
         # 构造存储相对地址
         print(" " + landmark_name)
-        landmark_path = location_path + "/" + landmark_name
+        landmark_path = Path(location_path + "/" + landmark_name)
         # 进入景点图片页
         try:
             WebDriverWait(browser, 10).until(lambda x: x.find_element_by_class_name("pic-big"))
