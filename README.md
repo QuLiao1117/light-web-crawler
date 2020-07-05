@@ -237,7 +237,7 @@ def _info_clawer():
 
 #### 在线查看网页
 
-浏览器地址栏中输入 
+浏览器地址栏中输入 http://47.97.208.253/web/ 访问
 
 ## API
 
@@ -256,11 +256,11 @@ get_place_top5_landmark_info(driver, location, save_path, landmark_number=5)
 
 `driver` 一个Selenium浏览器对象
 
-`location` 搜索的地区名称
+`location` (string) 搜索的地区名称
 
-`save_path` 保存路径
+`save_path` (string) 保存路径
 
-`landmark_number` 计划在选定的地区抓取的景点数量（默认为5）
+`landmark_number` (int) 计划在选定的地区抓取的景点数量（默认为5）
 
 ------
 
@@ -275,13 +275,13 @@ get_place_top5_comment(location, driver, landmark_number=5, save_path=os.path.ab
 
 ###### 参数
 
-`location` 搜索的地区名称
+`location` (string) 搜索的地区名称
 
 `driver` 一个Selenium浏览器对象
 
-`landmark_number` 计划在选定的地区抓取的景点数量（默认为5）
+`landmark_number` (int) 计划在选定的地区抓取的景点数量（默认为5）
 
-`save_path` 保存路径（默认为文件所在目录）
+`save_path` (string) 保存路径（默认为文件所在目录）
 
 ------
 
@@ -299,13 +299,13 @@ location_landmark_pic_download(browser, location_name="北京", landmark_number=
 
 `browser` 一个Selenium浏览器对象
 
-`location_name` 搜索的地区名称（默认为"北京"）
+`location_name` (string) 搜索的地区名称（默认为"北京"）
 
-`landmark_number` 计划在选定的地区抓取的景点数量（默认为5）
+`landmark_number` (int) 计划在选定的地区抓取的景点数量（默认为5）
 
-`pic_number_per_landmark` 每个景点抓取的图片数（默认为9）
+`pic_number_per_landmark` (int) 每个景点抓取的图片数（默认为9）
 
-`save_path` 保存路径（默认为文件所在目录）
+`save_path` (string) 保存路径（默认为文件所在目录）
 
 ###### 返回值
 
@@ -317,7 +317,7 @@ False表示该地区指定数量的部分图片未下载成功。
 
 ###### 事件
 
-`TimeoutException` 由于网页元素加载太久（默认10s）而报错。
+`TimeoutException` (Exception) 由于网页元素加载太久（默认10s）而报错。
 
 ------
 
@@ -332,11 +332,11 @@ pic_link_save_as_png(pic_link, png_name, pic_path)
 
 ###### 参数
 
-`pic_link` 一张图片链接
+`pic_link` (string) 一张图片链接
 
-`png_name` 图片名称
+`png_name` (string) 图片名称
 
-`pic_path` png图片保存路径
+`pic_path` (string) png图片保存路径
 
 ------
 
@@ -353,13 +353,13 @@ cal_words_freq(texts, stopwords)
 
 ###### 参数
 
-`texts` 一组评论list
+`texts` (list) 一组评论
 
-`stopwords` 停止词的list
+`stopwords` (list) 停用词
 
 ###### 返回值
 
-字典对象
+(dictionary) 字典对象
 
 key为词，value为频率
 
@@ -376,9 +376,9 @@ texts_analysis(comments_file_path, stopwords_file_path)
 
 ###### 参数
 
-`comments_file_path` 所有评论的文件夹路径
+`comments_file_path` (string) 所有评论的文件夹路径
 
-`stopwords_file_path` 停用词文件路径
+`stopwords_file_path` (string) 停用词文件路径
 
 ###### 输出
 
