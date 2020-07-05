@@ -34,7 +34,7 @@ GET_LANDMARK_NUM = 5  # 爬取景点数
 DOWNLOAD_PIC_NUM = 9  # 每个景点爬取图片数
 
 
-# 图片抓取
+# 图片抓取爬虫进程函数
 def _pic_clawer():
     browser_obj1 = webdriver.Chrome()
     fail_download_locations = []  # 下载失败的地区
@@ -52,16 +52,17 @@ def _pic_clawer():
         print("所有地点下载完成")
     browser_obj1.quit()  # 退出浏览器
 
-
+# 评论抓取爬虫与数据分析进程函数
 def _comment_clawer_analysis():
     browser_obj2 = webdriver.Chrome()
     for location2 in LOCATIONS:
         lcc.get_place_top5_comments(location2, browser_obj2, GET_LANDMARK_NUM, FILE_PATH + '/docs/comments')
+    # 评论分析
     cm.texts_analysis(FILE_PATH + '/docs/comments',
                       FILE_PATH + '/projects/stopwords/stopwords.txt')
     browser_obj2.quit()  # 退出浏览器
 
-
+# 景点信息抓取爬虫进程函数
 def _info_clawer():
     browser_obj3 = webdriver.Chrome()
     for location3 in LOCATIONS:
@@ -77,5 +78,4 @@ PROCESSING_POOL.apply_async(func=_info_clawer, args=())
 PROCESSING_POOL.apply_async(func=_pic_clawer, args=())
 PROCESSING_POOL.close()
 PROCESSING_POOL.join()
-#_pic_clawer()
 print('示例程序运行完毕！')
