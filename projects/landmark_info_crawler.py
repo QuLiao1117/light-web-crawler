@@ -70,11 +70,14 @@ def get_place_top5_landmark_info(driver, location, save_path, landmark_number=5)
         dic[place_name[0]]["交通"] = dd_content[0].text
         dic[place_name[0]]["门票"] = dd_content[1].text
         dic[place_name[0]]["开放时间"] = dd_content[2].text
+    #将字典转换为json字符串
     json_str = json.dumps(dic, ensure_ascii=False)
+    #使用全平台兼容路径
     data_folder = Path(save_path + '/')
     if not os.path.exists(data_folder):
         os.makedirs(data_folder)
     location_path = data_folder / (location + ".json")
+    #将json以utf8写入文件
     with open(location_path, 'w+', encoding='utf-8') as json_file:
         json_file.write(json_str)
 
